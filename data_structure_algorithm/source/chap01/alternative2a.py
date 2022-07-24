@@ -8,3 +8,10 @@ for _ in range(1, n // 2 + 1):
     
 if n % 2:
     print('+', end='')  # n이 홀수일 때만 +를 출력
+    
+    
+    
+for _ in range(1, n//2+1):
+    print('+-',end="")
+if n%2:
+    print('+')
