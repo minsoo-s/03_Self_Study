@@ -31,7 +31,7 @@ if __name__ == '__main__':
         while True:
             x[i] = int(input(f'x[{i}]: '))
             if x[i] >= x[i - 1]:
-                 break
+                break
 
     ky = int(input('검색할 값을 입력하세요.: '))  # 검색할 ky를 입력
 
