@@ -1,9 +1,9 @@
-# [Do it! ì‹¤ìŠµ 6-8] ì…¸ ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ êµ¬í˜„í•˜ê¸°
+# [Do it! ½Ç½À 6-8] ¼Ğ Á¤·Ä ¾Ë°í¸®Áò ±¸ÇöÇÏ±â
 
 from typing import MutableSequence
 
 def shell_sort(a: MutableSequence) -> None:
-    """ì…¸ ì •ë ¬"""
+    """¼Ğ Á¤·Ä"""
     n = len(a)
     h = n // 2
     while h > 0:
@@ -17,15 +17,15 @@ def shell_sort(a: MutableSequence) -> None:
         h //= 2
 
 if __name__ == '__main__':
-    print('ì…¸ ì •ë ¬ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤.')
-    num = int(input('ì›ì†Œ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
-    x = [None] * num  # ì›ì†Œ ìˆ˜ê°€ numì¸ ë°°ì—´ì„ ìƒì„±
+    print('¼Ğ Á¤·ÄÀ» ¼öÇàÇÕ´Ï´Ù.')
+    num = int(input('¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
+    x = [None] * num  # ¿ø¼Ò ¼ö°¡ numÀÎ ¹è¿­À» »ı¼º
 
     for i in range(num):
         x[i] = int(input(f'x[{i}]: '))
 
-    shell_sort(x)  # ë°°ì—´ xë¥¼ ì…¸ ì •ë ¬
+    shell_sort(x)  # ¹è¿­ x¸¦ ¼Ğ Á¤·Ä
 
-    print('ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í–ˆìŠµë‹ˆë‹¤.')
+    print('¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇß½À´Ï´Ù.')
     for i in range(num):
         print(f'x[{i}] = {x[i]}')

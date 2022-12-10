@@ -1,9 +1,9 @@
-# [Do it! ì‹¤ìŠµ 2-2] ì‹œí€€ìŠ¤ ì›ì†Œì˜ ìµœëŒ“ê°’ ì¶œë ¥í•˜ê¸°
+# [Do it! ½Ç½À 2-2] ½ÃÄö½º ¿ø¼ÒÀÇ ÃÖ´ñ°ª Ãâ·ÂÇÏ±â
 
 from typing import Any, Sequence
 
 def max_of(a: Sequence) -> Any:
-    """ì‹œí€€ìŠ¤í˜• a ìš”ì†Œì˜ ìµœëŒ“ê°’ì„ ë°˜í™˜"""
+    """½ÃÄö½ºÇü a ¿ä¼ÒÀÇ ÃÖ´ñ°ªÀ» ¹İÈ¯"""
     maximum = a[0]
     for i in range(1, len(a)):
         if a[i] > maximum: 
@@ -11,11 +11,11 @@ def max_of(a: Sequence) -> Any:
     return maximum
 
 if __name__ == '__main__':
-    print('ë°°ì—´ì˜ ìµœëŒ“ê°’ì„ êµ¬í•©ë‹ˆë‹¤.')
-    num = int(input('ì›ì†Œ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš” : '))
-    x = [None] * num    # ì›ì†Œ ìˆ˜ê°€ numì¸ ë¦¬ìŠ¤íŠ¸ë¥¼ ìƒì„±
+    print('¹è¿­ÀÇ ÃÖ´ñ°ªÀ» ±¸ÇÕ´Ï´Ù.')
+    num = int(input('¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä : '))
+    x = [None] * num    # ¿ø¼Ò ¼ö°¡ numÀÎ ¸®½ºÆ®¸¦ »ı¼º
 
     for i in range(num):
-        x[i] = int(input(f'x[{i}]ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
+        x[i] = int(input(f'x[{i}]¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
 
-    print(f'ìµœëŒ“ê°’ì€ {max_of(x)}ì…ë‹ˆë‹¤.')
+    print(f'ÃÖ´ñ°ªÀº {max_of(x)}ÀÔ´Ï´Ù.')

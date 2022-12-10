@@ -1,47 +1,47 @@
-# [Do it! ì‹¤ìŠµ 9-1] ì´ì§„ ê²€ìƒ‰ íŠ¸ë¦¬ì˜ êµ¬í˜„
+# [Do it! ½Ç½À 9-1] ÀÌÁø °Ë»ö Æ®¸®ÀÇ ±¸Çö
 
 from __future__ import annotations
 from typing import Any, Type
 
 class Node:
-    """ì´ì§„ ê²€ìƒ‰ íŠ¸ë¦¬ì˜ ë…¸ë“œ"""
+    """ÀÌÁø °Ë»ö Æ®¸®ÀÇ ³ëµå"""
     def __init__(self, key: Any, value: Any, left: Node = None,
                  right: Node = None):
-        """ìƒì„±ì"""
-        self.key = key      # í‚¤
-        self.value = value  # ê°’
-        self.left = left    # ì™¼ìª½ í¬ì¸í„°(ì™¼ìª½ ìì‹ ì°¸ì¡°)
-        self.right = right  # ì˜¤ë¥¸ìª½ í¬ì¸í„°(ì˜¤ë¥¸ìª½ ìì‹ ì°¸ì¡°)
+        """»ı¼ºÀÚ"""
+        self.key = key      # Å°
+        self.value = value  # °ª
+        self.left = left    # ¿ŞÂÊ Æ÷ÀÎÅÍ(¿ŞÂÊ ÀÚ½Ä ÂüÁ¶)
+        self.right = right  # ¿À¸¥ÂÊ Æ÷ÀÎÅÍ(¿À¸¥ÂÊ ÀÚ½Ä ÂüÁ¶)
 
 class BinarySearchTree:
-    """ì´ì§„ ê²€ìƒ‰ íŠ¸ë¦¬"""
+    """ÀÌÁø °Ë»ö Æ®¸®"""
 
     def __init__(self):
-        """ì´ˆê¸°í™”"""
-        self.root = None  # ë£¨íŠ¸
+        """ÃÊ±âÈ­"""
+        self.root = None  # ·çÆ®
 
-# Do it! ì‹¤ìŠµ 9-1[B]
+# Do it! ½Ç½À 9-1[B]
     def search(self, key: Any) -> Any:
-        """í‚¤ keyë¥¼ ê°–ëŠ” ë…¸ë“œë¥¼ ê²€ìƒ‰"""
-        p = self.root           # ë£¨íŠ¸ì— ì£¼ëª©
+        """Å° key¸¦ °®´Â ³ëµå¸¦ °Ë»ö"""
+        p = self.root           # ·çÆ®¿¡ ÁÖ¸ñ
         while True:
-            if p is None:       # ë” ì´ìƒ ì§„í–‰í•  ìˆ˜ ì—†ìœ¼ë©´
-                return None     # ê²€ìƒ‰ ì‹¤íŒ¨
-            if key == p.key:    # keyì™€ ë…¸ë“œ pì˜ í‚¤ê°€ ê°™ìœ¼ë©´
-                return p.value  # ê²€ìƒ‰ ì„±ê³µ
-            elif key < p.key:   # key ìª½ì´ ì‘ìœ¼ë©´
-                p = p.left      # ì™¼ìª½ ì„œë¸Œ íŠ¸ë¦¬ì—ì„œ ê²€ìƒ‰
-            else:               # key ìª½ì´ í¬ë©´
-                p = p.right     # ì˜¤ë¥¸ìª½ ì„œë¸Œ íŠ¸ë¦¬ì—ì„œ ê²€ìƒ‰
+            if p is None:       # ´õ ÀÌ»ó ÁøÇàÇÒ ¼ö ¾øÀ¸¸é
+                return None     # °Ë»ö ½ÇÆĞ
+            if key == p.key:    # key¿Í ³ëµå pÀÇ Å°°¡ °°À¸¸é
+                return p.value  # °Ë»ö ¼º°ø
+            elif key < p.key:   # key ÂÊÀÌ ÀÛÀ¸¸é
+                p = p.left      # ¿ŞÂÊ ¼­ºê Æ®¸®¿¡¼­ °Ë»ö
+            else:               # key ÂÊÀÌ Å©¸é
+                p = p.right     # ¿À¸¥ÂÊ ¼­ºê Æ®¸®¿¡¼­ °Ë»ö
 
-# Do it! ì‹¤ìŠµ 9-1[C]
+# Do it! ½Ç½À 9-1[C]
     def add(self, key: Any, value: Any) -> bool:
-        """í‚¤ê°€ keyì´ê³ , ê°’ì´ valueì¸ ë…¸ë“œë¥¼ ì‚½ì…"""
+        """Å°°¡ keyÀÌ°í, °ªÀÌ valueÀÎ ³ëµå¸¦ »ğÀÔ"""
 
         def add_node(node: Node, key: Any, value: Any) -> None:
-            """nodeë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì„œë¸Œ íŠ¸ë¦¬ì— í‚¤ê°€ keyì´ê³ , ê°’ì´ valueì¸ ë…¸ë“œë¥¼ ì‚½ì…"""
+            """node¸¦ ·çÆ®·Î ÇÏ´Â ¼­ºê Æ®¸®¿¡ Å°°¡ keyÀÌ°í, °ªÀÌ valueÀÎ ³ëµå¸¦ »ğÀÔ"""
             if key == node.key:
-                return False  # keyê°€ ì´ì§„ê²€ìƒ‰íŠ¸ë¦¬ì— ì´ë¯¸ ì¡´ì¬
+                return False  # key°¡ ÀÌÁø°Ë»öÆ®¸®¿¡ ÀÌ¹Ì Á¸Àç
             elif key < node.key:
                 if node.left is None:
                     node.left = Node(key, value, None, None)
@@ -60,75 +60,75 @@ class BinarySearchTree:
         else:
             return add_node(self.root, key, value)
 
-# # Do it! ì‹¤ìŠµ 9-1[D]
+# # Do it! ½Ç½À 9-1[D]
     def remove(self, key: Any) -> bool:
-        """í‚¤ê°€ keyì¸ ë…¸ë“œë¥¼ ì‚­ì œ"""
-        p = self.root           # ìŠ¤ìº” ì¤‘ì¸ ë…¸ë“œ
-        parent = None           # ìŠ¤ìº” ì¤‘ì¸ ë…¸ë“œì˜ ë¶€ëª¨ ë…¸ë“œ
-        is_left_child = True    # pëŠ” parentì˜ ì™¼ìª½ ìì‹ ë…¸ë“œì¸ì§€ í™•ì¸
+        """Å°°¡ keyÀÎ ³ëµå¸¦ »èÁ¦"""
+        p = self.root           # ½ºÄµ ÁßÀÎ ³ëµå
+        parent = None           # ½ºÄµ ÁßÀÎ ³ëµåÀÇ ºÎ¸ğ ³ëµå
+        is_left_child = True    # p´Â parentÀÇ ¿ŞÂÊ ÀÚ½Ä ³ëµåÀÎÁö È®ÀÎ
 
         while True:
-            if p is None:       # ë” ì´ìƒ ì§„í–‰í•  ìˆ˜ ì—†ìœ¼ë©´
-                return False    # ê·¸ í‚¤ëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŒ
+            if p is None:       # ´õ ÀÌ»ó ÁøÇàÇÒ ¼ö ¾øÀ¸¸é
+                return False    # ±× Å°´Â Á¸ÀçÇÏÁö ¾ÊÀ½
 
-            if key == p.key:    # keyì™€ ë…¸ë“œ pì˜ í‚¤ê°€ ê°™ìœ¼ë©´
-                break           # ê²€ìƒ‰ ì„±ê³µ
+            if key == p.key:    # key¿Í ³ëµå pÀÇ Å°°¡ °°À¸¸é
+                break           # °Ë»ö ¼º°ø
             else:
-                parent = p                  # ê°€ì§€ë¥¼ ë‚´ë ¤ê°€ê¸° ì „ì— ë¶€ëª¨ë¥¼ ì„¤ì •
-                if key < p.key:             # key ìª½ì´ ì‘ìœ¼ë©´
-                    is_left_child = True    # ì—¬ê¸°ì„œ ë‚´ë ¤ê°€ëŠ” ê²ƒì€ ì™¼ìª½ ìì‹
-                    p = p.left              # ì™¼ìª½ ì„œë¸Œ íŠ¸ë¦¬ì—ì„œ ê²€ìƒ‰
-                else:                       # key ìª½ì´ í¬ë©´
-                    is_left_child = False   # ì—¬ê¸°ì„œ ë‚´ë ¤ê°€ëŠ” ê²ƒì€ ì˜¤ë¥¸ìª½ ìì‹
-                    p = p.right             # ì˜¤ë¥¸ìª½ ì„œë¸Œ íŠ¸ë¦¬ì—ì„œ ê²€ìƒ‰
+                parent = p                  # °¡Áö¸¦ ³»·Á°¡±â Àü¿¡ ºÎ¸ğ¸¦ ¼³Á¤
+                if key < p.key:             # key ÂÊÀÌ ÀÛÀ¸¸é
+                    is_left_child = True    # ¿©±â¼­ ³»·Á°¡´Â °ÍÀº ¿ŞÂÊ ÀÚ½Ä
+                    p = p.left              # ¿ŞÂÊ ¼­ºê Æ®¸®¿¡¼­ °Ë»ö
+                else:                       # key ÂÊÀÌ Å©¸é
+                    is_left_child = False   # ¿©±â¼­ ³»·Á°¡´Â °ÍÀº ¿À¸¥ÂÊ ÀÚ½Ä
+                    p = p.right             # ¿À¸¥ÂÊ ¼­ºê Æ®¸®¿¡¼­ °Ë»ö
 
-        if p.left is None:                  # pì— ì™¼ìª½ ìì‹ì´ ì—†ìœ¼ë©´
+        if p.left is None:                  # p¿¡ ¿ŞÂÊ ÀÚ½ÄÀÌ ¾øÀ¸¸é
             if p is self.root:
                 self.root = p.right
             elif is_left_child:
-                parent.left = p.right       # ë¶€ëª¨ì˜ ì™¼ìª½ í¬ì¸í„°ê°€ ì˜¤ë¥¸ìª½ ìì‹ì„ ê°€ë¦¬í‚´
+                parent.left = p.right       # ºÎ¸ğÀÇ ¿ŞÂÊ Æ÷ÀÎÅÍ°¡ ¿À¸¥ÂÊ ÀÚ½ÄÀ» °¡¸®Å´
             else:
-                parent.right = p.right      # ë¶€ëª¨ì˜ ì˜¤ë¥¸ìª½ í¬ì¸í„°ê°€ ì˜¤ë¥¸ìª½ ìì‹ì„ ê°€ë¦¬í‚´
-        elif p.right is None:               # pì— ì˜¤ë¥¸ìª½ ìì‹ì´ ì—†ìœ¼ë©´
+                parent.right = p.right      # ºÎ¸ğÀÇ ¿À¸¥ÂÊ Æ÷ÀÎÅÍ°¡ ¿À¸¥ÂÊ ÀÚ½ÄÀ» °¡¸®Å´
+        elif p.right is None:               # p¿¡ ¿À¸¥ÂÊ ÀÚ½ÄÀÌ ¾øÀ¸¸é
             if p is self.root:
                 self.root = p.left
             elif is_left_child:
-                parent.left = p.left        # ë¶€ëª¨ì˜ ì™¼ìª½ í¬ì¸í„°ê°€ ì™¼ìª½ ìì‹ì„ ê°€ë¦¬í‚´
+                parent.left = p.left        # ºÎ¸ğÀÇ ¿ŞÂÊ Æ÷ÀÎÅÍ°¡ ¿ŞÂÊ ÀÚ½ÄÀ» °¡¸®Å´
             else:
-                parent.right = p.left       # ë¶€ëª¨ì˜ ì˜¤ë¥¸ìª½ í¬ì¸í„°ê°€ ì™¼ìª½ ìì‹ì„ ê°€ë¦¬í‚´
+                parent.right = p.left       # ºÎ¸ğÀÇ ¿À¸¥ÂÊ Æ÷ÀÎÅÍ°¡ ¿ŞÂÊ ÀÚ½ÄÀ» °¡¸®Å´
         else:
             parent = p
-            left = p.left                   # ì„œë¸Œ íŠ¸ë¦¬ ì•ˆì—ì„œ ê°€ì¥ í° ë…¸ë“œ
+            left = p.left                   # ¼­ºê Æ®¸® ¾È¿¡¼­ °¡Àå Å« ³ëµå
             is_left_child = True
-            while left.right is not None:   # ê°€ì¥ í° ë…¸ë“œ leftë¥¼ ê²€ìƒ‰
+            while left.right is not None:   # °¡Àå Å« ³ëµå left¸¦ °Ë»ö
                 parent = left
                 left = left.right
                 is_left_child = False
 
-            p.key = left.key                # leftì˜ í‚¤ë¥¼ pë¡œ ì´ë™
-            p.value = left.value            # leftì˜ ë°ì´í„°ë¥¼ pë¡œ ì´ë™
+            p.key = left.key                # leftÀÇ Å°¸¦ p·Î ÀÌµ¿
+            p.value = left.value            # leftÀÇ µ¥ÀÌÅÍ¸¦ p·Î ÀÌµ¿
             if is_left_child:
-                parent.left = left.left     # leftë¥¼ ì‚­ì œ
+                parent.left = left.left     # left¸¦ »èÁ¦
             else:
-                parent.right = left.left    # leftë¥¼ ì‚­ì œ
+                parent.right = left.left    # left¸¦ »èÁ¦
         return True
 
-# Do it! ì‹¤ìŠµ 9-1[E]
+# Do it! ½Ç½À 9-1[E]
     def dump(self) -> None:
-        """ë¤í”„(ëª¨ë“  ë…¸ë“œë¥¼ í‚¤ì˜ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì¶œë ¥)"""
+        """´ıÇÁ(¸ğµç ³ëµå¸¦ Å°ÀÇ ¿À¸§Â÷¼øÀ¸·Î Ãâ·Â)"""
 
         def print_subtree(node: Node):
-            """nodeë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” ì„œë¸Œ íŠ¸ë¦¬ì˜ ë…¸ë“œë¥¼ í‚¤ì˜ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì¶œë ¥"""
+            """node¸¦ ·çÆ®·Î ÇÏ´Â ¼­ºê Æ®¸®ÀÇ ³ëµå¸¦ Å°ÀÇ ¿À¸§Â÷¼øÀ¸·Î Ãâ·Â"""
             if node is not None:
-                print_subtree(node.left)            # ì™¼ìª½ ì„œë¸Œ íŠ¸ë¦¬ë¥¼ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì¶œë ¥
-                print(f'{node.key}  {node.value}')  # nodeë¥¼ ì¶œë ¥
-                print_subtree(node.right)           # ì˜¤ë¥¸ìª½ ì„œë¸Œ íŠ¸ë¦¬ë¥¼ ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì¶œë ¥
+                print_subtree(node.left)            # ¿ŞÂÊ ¼­ºê Æ®¸®¸¦ ¿À¸§Â÷¼øÀ¸·Î Ãâ·Â
+                print(f'{node.key}  {node.value}')  # node¸¦ Ãâ·Â
+                print_subtree(node.right)           # ¿À¸¥ÂÊ ¼­ºê Æ®¸®¸¦ ¿À¸§Â÷¼øÀ¸·Î Ãâ·Â
 
         print_subtree(self.root)
 
-# Do it! ì‹¤ìŠµ 9-1[F]
+# Do it! ½Ç½À 9-1[F]
     def min_key(self) -> Any:
-        """ê°€ì¥ ì‘ì€ í‚¤"""
+        """°¡Àå ÀÛÀº Å°"""
         if self.root is None:
             return None
         p = self.root
@@ -137,7 +137,7 @@ class BinarySearchTree:
         return p.key
 
     def max_key(self) -> Any:
-        """ê°€ì¥ í° í‚¤"""
+        """°¡Àå Å« Å°"""
         if self.root is None:
             return None
         p = self.root

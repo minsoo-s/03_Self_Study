@@ -1,84 +1,84 @@
-# ì²´ì¸ë²•ìœ¼ë¡œ í•´ì‹œ í•¨ìˆ˜ êµ¬í˜„í•˜ê¸°
-# Do it! ì‹¤ìŠµ 3-5 [A]
+# Ã¼ÀÎ¹ıÀ¸·Î ÇØ½Ã ÇÔ¼ö ±¸ÇöÇÏ±â
+# Do it! ½Ç½À 3-5 [A]
 from __future__ import annotations
 from typing import Any, Type
 import hashlib
 
 class Node:
-    """í•´ì‹œë¥¼ êµ¬ì„±í•˜ëŠ” ë…¸ë“œ"""
+    """ÇØ½Ã¸¦ ±¸¼ºÇÏ´Â ³ëµå"""
 
     def __init__(self, key: Any, value: Any, next: Node) -> None:
-        """ì´ˆê¸°í™”"""
-        self.key   = key    # í‚¤
-        self.value = value  # ê°’
-        self.next  = next   # ë’¤ìª½ ë…¸ë“œë¥¼ ì°¸ì¡°
+        """ÃÊ±âÈ­"""
+        self.key   = key    # Å°
+        self.value = value  # °ª
+        self.next  = next   # µÚÂÊ ³ëµå¸¦ ÂüÁ¶
 
-# Do it! ì‹¤ìŠµ 3-5 [B]
+# Do it! ½Ç½À 3-5 [B]
 class ChainedHash:
-    """ì²´ì¸ë²•ì„ í•´ì‹œ í´ë˜ìŠ¤ êµ¬í˜„"""
+    """Ã¼ÀÎ¹ıÀ» ÇØ½Ã Å¬·¡½º ±¸Çö"""
 
     def __init__(self, capacity: int) -> None:
-        """ì´ˆê¸°í™”"""
-        self.capacity = capacity             # í•´ì‹œ í…Œì´ë¸”ì˜ í¬ê¸°ë¥¼ ì§€ì •
-        self.table = [None] * self.capacity  # í•´ì‹œ í…Œì´ë¸”(ë¦¬ìŠ¤íŠ¸)ì„ ì„ ì–¸
+        """ÃÊ±âÈ­"""
+        self.capacity = capacity             # ÇØ½Ã Å×ÀÌºíÀÇ Å©±â¸¦ ÁöÁ¤
+        self.table = [None] * self.capacity  # ÇØ½Ã Å×ÀÌºí(¸®½ºÆ®)À» ¼±¾ğ
 
     def hash_value(self, key: Any) -> int:
-        """í•´ì‹œê°’ì„ êµ¬í•¨"""
+        """ÇØ½Ã°ªÀ» ±¸ÇÔ"""
         if isinstance(key, int):
             return key % self.capacity
         return(int(hashlib.sha256(str(key).encode()).hexdigest(), 16) % self.capacity)
 
-# Do it! ì‹¤ìŠµ 3-5[C]
+# Do it! ½Ç½À 3-5[C]
     def search(self, key: Any) -> Any:
-        """í‚¤ê°€ keyì¸ ì›ì†Œë¥¼ ê²€ìƒ‰í•˜ì—¬ ê°’ì„ ë°˜í™˜"""
-        hash = self.hash_value(key)  # ê²€ìƒ‰í•˜ëŠ” í‚¤ì˜ í•´ì‹œê°’
-        p = self.table[hash]         # ë…¸ë“œë¥¼ ë…¸ë“œ
+        """Å°°¡ keyÀÎ ¿ø¼Ò¸¦ °Ë»öÇÏ¿© °ªÀ» ¹İÈ¯"""
+        hash = self.hash_value(key)  # °Ë»öÇÏ´Â Å°ÀÇ ÇØ½Ã°ª
+        p = self.table[hash]         # ³ëµå¸¦ ³ëµå
 
         while p is not None:
             if p.key == key:
-                 return p.value  # ê²€ìƒ‰ ì„±ê³µ
-            p = p.next           # ë’¤ìª½ ë…¸ë“œë¥¼ ì£¼ëª©
+                 return p.value  # °Ë»ö ¼º°ø
+            p = p.next           # µÚÂÊ ³ëµå¸¦ ÁÖ¸ñ
 
-        return None              # ê²€ìƒ‰ ì‹¤íŒ¨
+        return None              # °Ë»ö ½ÇÆĞ
 
     def add(self, key: Any, value: Any) -> bool:
-        """í‚¤ê°€ keyì´ê³  ê°’ì´ valueì¸ ì›ì†Œë¥¼ ì‚½ì…"""
-        hash = self.hash_value(key)  # ì‚½ì…í•˜ëŠ” í‚¤ì˜ í•´ì‹œê°’
-        p = self.table[hash]         # ì£¼ëª©í•˜ëŠ” ë…¸ë“œ
+        """Å°°¡ keyÀÌ°í °ªÀÌ valueÀÎ ¿ø¼Ò¸¦ »ğÀÔ"""
+        hash = self.hash_value(key)  # »ğÀÔÇÏ´Â Å°ÀÇ ÇØ½Ã°ª
+        p = self.table[hash]         # ÁÖ¸ñÇÏ´Â ³ëµå
 
         while p is not None:
             if p.key == key:
-                return False         # ì‚½ì… ì‹¤íŒ¨
-            p = p.next               # ë’¤ìª½ ë…¸ë“œì— ì£¼ëª©
+                return False         # »ğÀÔ ½ÇÆĞ
+            p = p.next               # µÚÂÊ ³ëµå¿¡ ÁÖ¸ñ
 
         temp = Node(key, value, self.table[hash])
-        self.table[hash] = temp      # ë…¸ë“œë¥¼ ì‚½ì…
-        return True                  # ì‚½ì… ì„±ê³µ
+        self.table[hash] = temp      # ³ëµå¸¦ »ğÀÔ
+        return True                  # »ğÀÔ ¼º°ø
 
-# Do it! ì‹¤ìŠµ 3-5[D]
+# Do it! ½Ç½À 3-5[D]
     def remove(self, key: Any) -> bool:
-        """í‚¤ê°€ keyì¸ ì›ì†Œë¥¼ ì‚­ì œ"""
-        hash = self.hash_value(key)  # ì‚­ì œí•  í‚¤ì˜ í•´ì‹œê°’
-        p = self.table[hash]         # ì£¼ëª©í•˜ê³  ìˆëŠ” ë…¸ë“œ
-        pp = None                    # ë°”ë¡œ ì• ì£¼ëª© ë…¸ë“œ
+        """Å°°¡ keyÀÎ ¿ø¼Ò¸¦ »èÁ¦"""
+        hash = self.hash_value(key)  # »èÁ¦ÇÒ Å°ÀÇ ÇØ½Ã°ª
+        p = self.table[hash]         # ÁÖ¸ñÇÏ°í ÀÖ´Â ³ëµå
+        pp = None                    # ¹Ù·Î ¾Õ ÁÖ¸ñ ³ëµå
 
         while p is not None:
-            if p.key == key:  # keyë¥¼ ë°œê²¬í•˜ë©´ ì•„ë˜ë¥¼ ì‹¤í–‰
+            if p.key == key:  # key¸¦ ¹ß°ßÇÏ¸é ¾Æ·¡¸¦ ½ÇÇà
                 if pp is None:
                     self.table[hash] = p.next
                 else:
                     pp.next = p.next
-                return True  # key ì‚­ì œ ì„±ê³µ
+                return True  # key »èÁ¦ ¼º°ø
             pp = p
-            p = p.next       # ë’¤ìª½ ë…¸ë“œì— ì£¼ëª©
-        return False         # ì‚­ì œ ì‹¤íŒ¨(keyê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŒ)
+            p = p.next       # µÚÂÊ ³ëµå¿¡ ÁÖ¸ñ
+        return False         # »èÁ¦ ½ÇÆĞ(key°¡ Á¸ÀçÇÏÁö ¾ÊÀ½)
 
     def dump(self) -> None:
-        """í•´ì‹œ í…Œì´ë¸”ì„ ë¤í”„"""
+        """ÇØ½Ã Å×ÀÌºíÀ» ´ıÇÁ"""
         for i in range(self.capacity):
             p = self.table[i]
             print(i, end='')
             while p is not None:
-                print(f'  â†’ {p.key} ({p.value})', end='')  # í•´ì‹œ í…Œì´ë¸”ì— ìˆëŠ” í‚¤ì™€ ê°’ì„ ì¶œë ¥
+                print(f'  ¡æ {p.key} ({p.value})', end='')  # ÇØ½Ã Å×ÀÌºí¿¡ ÀÖ´Â Å°¿Í °ªÀ» Ãâ·Â
                 p = p.next
             print()

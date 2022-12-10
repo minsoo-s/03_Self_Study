@@ -1,21 +1,21 @@
-# [Do it! ì‹¤ìŠµ 2-9] 1,000 ì´í•˜ì˜ ì†Œìˆ˜ë¥¼ ë‚˜ì—´í•˜ê¸°(ì•Œê³ ë¦¬ì¦˜ ê°œì„  1)
+# [Do it! ½Ç½À 2-9] 1,000 ÀÌÇÏÀÇ ¼Ò¼ö¸¦ ³ª¿­ÇÏ±â(¾Ë°í¸®Áò °³¼± 1)
 
-counter = 0           # ë‚˜ëˆ—ì…ˆ íšŸìˆ˜
-ptr = 0               # ì´ë¯¸ ì°¾ì€ ì†Œìˆ˜ì˜ ê°œìˆ˜
-prime = [None] * 500  # ì†Œìˆ˜ë¥¼ ì €ìž¥í•˜ëŠ” ë°°ì—´
+counter = 0           # ³ª´°¼À È½¼ö
+ptr = 0               # ÀÌ¹Ì Ã£Àº ¼Ò¼öÀÇ °³¼ö
+prime = [None] * 500  # ¼Ò¼ö¸¦ ÀúÀåÇÏ´Â ¹è¿­
 
-prime[ptr] = 2        # 2ëŠ” ì†Œìˆ˜ì´ë¯€ë¡œ ì´ˆê¹ƒê°’ìœ¼ë¡œ ì§€ì •
+prime[ptr] = 2        # 2´Â ¼Ò¼öÀÌ¹Ç·Î ÃÊ±ê°ªÀ¸·Î ÁöÁ¤
 ptr += 1
 
-for n in range(3, 1001, 2):  # í™€ìˆ˜ë§Œì„ ëŒ€ìƒìœ¼ë¡œ ì„¤ì •
-    for i in range(1, ptr):  # ì´ë¯¸ ì°¾ì€ ì†Œìˆ˜ë¡œ ë‚˜ëˆ”
+for n in range(3, 1001, 2):  # È¦¼ö¸¸À» ´ë»óÀ¸·Î ¼³Á¤
+    for i in range(1, ptr):  # ÀÌ¹Ì Ã£Àº ¼Ò¼ö·Î ³ª´®
         counter += 1
-        if n % prime[i] == 0:  # ë‚˜ëˆ„ì–´ ë–¨ì–´ì§€ë©´ ì†Œìˆ˜ê°€ ì•„ë‹˜
-            break              # ë°˜ë³µ ì¤‘ë‹¨
-    else:                      # ëê¹Œì§€ ë‚˜ëˆ„ì–´ ë–¨ì–´ì§€ì§€ ì•Šì•˜ë‹¤ë©´
-        prime[ptr] = n         # ì†Œìˆ˜ë¡œ ë°°ì—´ì— ë“±ë¡
+        if n % prime[i] == 0:  # ³ª´©¾î ¶³¾îÁö¸é ¼Ò¼ö°¡ ¾Æ´Ô
+            break              # ¹Ýº¹ Áß´Ü
+    else:                      # ³¡±îÁö ³ª´©¾î ¶³¾îÁöÁö ¾Ê¾Ò´Ù¸é
+        prime[ptr] = n         # ¼Ò¼ö·Î ¹è¿­¿¡ µî·Ï
         ptr += 1
 
-for i in range(ptr):  # ptrì˜ ì†Œìˆ˜ë¥¼ ì¶œë ¥
+for i in range(ptr):  # ptrÀÇ ¼Ò¼ö¸¦ Ãâ·Â
     print(prime[i])
-print(f'ë‚˜ëˆ—ì…ˆì„ ì‹¤í–‰í•œ íšŸìˆ˜: {counter}')
+print(f'³ª´°¼ÀÀ» ½ÇÇàÇÑ È½¼ö: {counter}')

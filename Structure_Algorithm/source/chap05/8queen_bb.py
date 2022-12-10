@@ -1,24 +1,24 @@
-# [Do it! ì‹¤ìŠµ 5-8] í–‰ê³¼ ì—´ì— í€¸ì„ 1ê°œ ë°°ì¹˜í•˜ëŠ” ì¡°í•©ì„ ìž¬ê·€ì ìœ¼ë¡œ ë‚˜ì—´í•˜ê¸°
+# [Do it! ½Ç½À 5-8] Çà°ú ¿­¿¡ ÄýÀ» 1°³ ¹èÄ¡ÇÏ´Â Á¶ÇÕÀ» Àç±ÍÀûÀ¸·Î ³ª¿­ÇÏ±â
 
-pos = [0] * 8       # ê° ì—´ì—ì„œ í€¸ì˜ ìœ„ì¹˜
-flag = [False] * 8  # ê° í–‰ì— í€¸ì„ ë°°ì¹˜í–ˆëŠ”ì§€ ì²´í¬
+pos = [0] * 8       # °¢ ¿­¿¡¼­ ÄýÀÇ À§Ä¡
+flag = [False] * 8  # °¢ Çà¿¡ ÄýÀ» ¹èÄ¡Çß´ÂÁö Ã¼Å©
 
 def put() -> None:
-    """ê° ì—´ì— ë†“ì€ í€¸ì˜ ìœ„ì¹˜ë¥¼ ì¶œë ¥"""
+    """°¢ ¿­¿¡ ³õÀº ÄýÀÇ À§Ä¡¸¦ Ãâ·Â"""
     for i in range(8):
         print(f'{pos[i]:2}', end='')
     print()
 
 def set(i: int) -> None:
-    """i ì—´ì˜ ì•Œë§žì€ ìœ„ì¹˜ì— í€¸ì„ ë°°ì¹˜"""
+    """i ¿­ÀÇ ¾Ë¸ÂÀº À§Ä¡¿¡ ÄýÀ» ¹èÄ¡"""
     for j in range(8):
-        if not flag[j]:  # j í–‰ì— í€¸ì„ ë°°ì¹˜í•˜ì§€ ì•Šì•˜ìœ¼ë©´
-            pos[i] = j   # í€¸ì„ j í–‰ì— ë°°ì¹˜
-            if i == 7:   # ëª¨ë“  ì—´ì— í€¸ì„ ë°°ì¹˜ë¥¼ ì™„ë£Œ
+        if not flag[j]:  # j Çà¿¡ ÄýÀ» ¹èÄ¡ÇÏÁö ¾Ê¾ÒÀ¸¸é
+            pos[i] = j   # ÄýÀ» j Çà¿¡ ¹èÄ¡
+            if i == 7:   # ¸ðµç ¿­¿¡ ÄýÀ» ¹èÄ¡¸¦ ¿Ï·á
                 put()
             else:
                 flag[j] = True
-                set(i + 1)  # ë‹¤ìŒ ì—´ì— í€¸ì„ ë°°ì¹˜
+                set(i + 1)  # ´ÙÀ½ ¿­¿¡ ÄýÀ» ¹èÄ¡
                 flag[j] = False
 
-set(0)  # 0ì—´ì— í€¸ì„ ë°°ì¹˜
+set(0)  # 0¿­¿¡ ÄýÀ» ¹èÄ¡

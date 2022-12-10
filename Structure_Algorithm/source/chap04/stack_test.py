@@ -1,54 +1,54 @@
-# [Do it! 4C-1] ê³ ì • ê¸¸ì´ ìŠ¤íƒ í´ë˜ìŠ¤(collections.deque)ë¥¼ ì‚¬ìš©í•˜ê¸°
+# [Do it! 4C-1] °íÁ¤ ±æÀÌ ½ºÅÃ Å¬·¡½º(collections.deque)¸¦ »ç¿ëÇÏ±â
 
 from enum import Enum
 from stack import Stack
 
-Menu = Enum('Menu', ['í‘¸ì‹œ', 'íŒ', 'í”¼í¬', 'ê²€ìƒ‰', 'ë¤í”„', 'ì¢…ë£Œ'])
+Menu = Enum('Menu', ['Çª½Ã', 'ÆË', 'ÇÇÅ©', '°Ë»ö', '´ıÇÁ', 'Á¾·á'])
 
 def select_menu() -> Menu:
-    """ë©”ë‰´ ì„ íƒ"""
+    """¸Ş´º ¼±ÅÃ"""
     s = [f'({m.value}){m.name}' for m in Menu]
     while True:
         print(*s, sep='  ', end='')
-        n = int(input('ï¼š'))
+        n = int(input('£º'))
         if 1 <= n <= len(Menu):
             return Menu(n)
 
-s = Stack(64)  # ìµœëŒ€ 64 ê°œë¥¼ í‘¸ì‹œí•  ìˆ˜ ìˆëŠ” ìŠ¤íƒ
+s = Stack(64)  # ÃÖ´ë 64 °³¸¦ Çª½ÃÇÒ ¼ö ÀÖ´Â ½ºÅÃ
 
 while True:
-    print(f'í˜„ì¬ ë°ì´í„° ê°œìˆ˜ï¼š{len(s)} / {s.capacity}')
-    menu = select_menu()  # ë©”ë‰´ ì„ íƒ
+    print(f'ÇöÀç µ¥ÀÌÅÍ °³¼ö£º{len(s)} / {s.capacity}')
+    menu = select_menu()  # ¸Ş´º ¼±ÅÃ
 
-    if menu == Menu.í‘¸ì‹œ:  # í‘¸ì‹œ
-        x = int(input('ë°ì´í„°ï¼š'))
+    if menu == Menu.Çª½Ã:  # Çª½Ã
+        x = int(input('µ¥ÀÌÅÍ£º'))
         try:
             s.push(x)
         except IndexError:
-            print('ìŠ¤íƒì´ ê°€ë“ ì°¼ìŠµë‹ˆë‹¤.')
+            print('½ºÅÃÀÌ °¡µæ Ã¡½À´Ï´Ù.')
 
-    elif menu == Menu.íŒ:  # íŒ
+    elif menu == Menu.ÆË:  # ÆË
         try:
             x = s.pop()
-            print(f'íŒí•œ ë°ì´í„°ëŠ” {x}ì…ë‹ˆë‹¤.')
+            print(f'ÆËÇÑ µ¥ÀÌÅÍ´Â {x}ÀÔ´Ï´Ù.')
         except IndexError:
-           print('ìŠ¤íƒì´ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤.')
+           print('½ºÅÃÀÌ ºñ¾î ÀÖ½À´Ï´Ù.')
 
-    elif menu == Menu.í”¼í¬:  # í”¼í¬
+    elif menu == Menu.ÇÇÅ©:  # ÇÇÅ©
         try:
             x = s.peek()
-            print(f'í”¼í¬í•œ ë°ì´í„°ëŠ” {x}ì…ë‹ˆë‹¤.')
+            print(f'ÇÇÅ©ÇÑ µ¥ÀÌÅÍ´Â {x}ÀÔ´Ï´Ù.')
         except IndexError:
-           print('ìŠ¤íƒì´ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤.')
+           print('½ºÅÃÀÌ ºñ¾î ÀÖ½À´Ï´Ù.')
 
-    elif menu == Menu.ê²€ìƒ‰:  # ê²€ìƒ‰
-        x = int(input('ê²€ìƒ‰ ê°’ì„ ì…ë ¥í•˜ì„¸ìš”ï¼š'))
+    elif menu == Menu.°Ë»ö:  # °Ë»ö
+        x = int(input('°Ë»ö °ªÀ» ÀÔ·ÂÇÏ¼¼¿ä£º'))
         if x in s:
-            print(f'{s.count(x)} ê°œë¥¼ í¬í•¨í•˜ê³ , ë§¨ ì•ìª½ì˜ ìœ„ì¹˜ëŠ” {s.find(x)}ì…ë‹ˆë‹¤.')
+            print(f'{s.count(x)} °³¸¦ Æ÷ÇÔÇÏ°í, ¸Ç ¾ÕÂÊÀÇ À§Ä¡´Â {s.find(x)}ÀÔ´Ï´Ù.')
         else:
-            print('ê²€ìƒ‰ ê°’ì€ í¬í•¨ë˜ì–´ ìˆì§€ ì•ŠìŠµë‹ˆë‹¤.')
+            print('°Ë»ö °ªÀº Æ÷ÇÔµÇ¾î ÀÖÁö ¾Ê½À´Ï´Ù.')
             
-    elif menu == Menu.ë¤í”„:  # ë¤í”„
+    elif menu == Menu.´ıÇÁ:  # ´ıÇÁ
         s.dump()
 
     else:

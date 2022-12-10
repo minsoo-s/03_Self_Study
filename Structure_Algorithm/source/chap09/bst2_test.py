@@ -1,12 +1,12 @@
-# [Do it! ì‹¤ìŠµ 9C-1] ì´ì§„ ê²€ìƒ‰ íŠ¸ë¦¬ í´ë˜ìŠ¤ BinarySearchTree ì‚¬ìš©í•˜ê¸°(ì˜¤ë¦„ì°¨ìˆœ, ë‚´ë¦¼ì°¨ìˆœìœ¼ë¡œ ë¤í”„)
+# [Do it! ½Ç½À 9C-1] ÀÌÁø °Ë»ö Æ®¸® Å¬·¡½º BinarySearchTree »ç¿ëÇÏ±â(¿À¸§Â÷¼ø, ³»¸²Â÷¼øÀ¸·Î ´ıÇÁ)
 
 from enum import Enum
 from bst2 import BinarySearchTree
 
-Menu = Enum('Menu', ['ì‚½ì…', 'ì‚­ì œ', 'ê²€ìƒ‰', 'ì˜¤ë¦„ì°¨ìˆœë¤í”„', 'ë‚´ë¦¼ì°¨ìˆœë¤í”„', 'í‚¤ì˜ë²”ìœ„', 'ì¢…ë£Œ'])
+Menu = Enum('Menu', ['»ğÀÔ', '»èÁ¦', '°Ë»ö', '¿À¸§Â÷¼ø´ıÇÁ', '³»¸²Â÷¼ø´ıÇÁ', 'Å°ÀÇ¹üÀ§', 'Á¾·á'])
 
 def select_Menu() -> Menu:
-    """ë©”ë‰´ ì„ íƒ"""
+    """¸Ş´º ¼±ÅÃ"""
     s = [f'({m.value}){m.name}' for m in Menu]
     while True:
         print(*s, sep = '  ', end='')
@@ -14,39 +14,39 @@ def select_Menu() -> Menu:
         if 1 <= n <= len(Menu):
             return Menu(n)
 
-tree = BinarySearchTree()  # ì´ì§„ ê²€ìƒ‰ íŠ¸ë¦¬ë¥¼ ìƒì„±
+tree = BinarySearchTree()  # ÀÌÁø °Ë»ö Æ®¸®¸¦ »ı¼º
 
 while True:
-    menu = select_Menu()  # ë©”ë‰´ ì„ íƒ
+    menu = select_Menu()  # ¸Ş´º ¼±ÅÃ
 
-    if menu == Menu.ì‚½ì…:  # ì‚½ì…
-        key = int(input('ì‚½ì…í•  í‚¤ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
-        val = input('ì‚½ì…í•  ê°’ì„ ì…ë ¥í•˜ì„¸ìš”.: ')
+    if menu == Menu.»ğÀÔ:  # »ğÀÔ
+        key = int(input('»ğÀÔÇÒ Å°¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
+        val = input('»ğÀÔÇÒ °ªÀ» ÀÔ·ÂÇÏ¼¼¿ä.: ')
         if not tree.add(key, val):
-            print('ì‚½ì…ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤!')
+            print('»ğÀÔ¿¡ ½ÇÆĞÇß½À´Ï´Ù!')
 
-    elif menu == Menu.ì‚­ì œ:  # ì‚­ì œ
-        key = int(input('ì‚­ì œí•  í‚¤ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
+    elif menu == Menu.»èÁ¦:  # »èÁ¦
+        key = int(input('»èÁ¦ÇÒ Å°¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
         tree.remove(key)
 
-    elif menu == Menu.ê²€ìƒ‰:  # ê²€ìƒ‰
-        key = int(input('ê²€ìƒ‰í•  í‚¤ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
+    elif menu == Menu.°Ë»ö:  # °Ë»ö
+        key = int(input('°Ë»öÇÒ Å°¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
         t = tree.search(key)
         if t is not None:
-            print(f'ì´ í‚¤ë¥¼ ê°–ëŠ” ê°’ì€ {t}ì…ë‹ˆë‹¤.')
+            print(f'ÀÌ Å°¸¦ °®´Â °ªÀº {t}ÀÔ´Ï´Ù.')
         else:
-            print('í•´ë‹¹ ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.')
+            print('ÇØ´ç µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.')
 
-    elif menu == Menu.ì˜¤ë¦„ì°¨ìˆœë¤í”„:  # ì˜¤ë¦„ì°¨ìˆœ ë¤í”„
+    elif menu == Menu.¿À¸§Â÷¼ø´ıÇÁ:  # ¿À¸§Â÷¼ø ´ıÇÁ
         tree.dump()
 
 
-    elif menu == Menu.ë‚´ë¦¼ì°¨ìˆœë¤í”„:  # ë‚´ë¦¼ì°¨ìˆœ ë¤í”„
+    elif menu == Menu.³»¸²Â÷¼ø´ıÇÁ:  # ³»¸²Â÷¼ø ´ıÇÁ
         tree.dump(reverse = True)
 
-    elif menu == Menu.í‚¤ì˜ë²”ìœ„ :  # í‚¤ì˜ ë²”ìœ„(ìµœì†Ÿê°’ê³¼ ìµœëŒ“ê°’)
-        print(f'í‚¤ì˜ ìµœì†Ÿê°’ì€ {tree.min_key()}ì…ë‹ˆë‹¤.')
-        print(f'í‚¤ì˜ ìµœëŒ“ê°’ì€ {tree.max_key()}ì…ë‹ˆë‹¤.')
+    elif menu == Menu.Å°ÀÇ¹üÀ§ :  # Å°ÀÇ ¹üÀ§(ÃÖ¼Ú°ª°ú ÃÖ´ñ°ª)
+        print(f'Å°ÀÇ ÃÖ¼Ú°ªÀº {tree.min_key()}ÀÔ´Ï´Ù.')
+        print(f'Å°ÀÇ ÃÖ´ñ°ªÀº {tree.max_key()}ÀÔ´Ï´Ù.')
         
-    else:# ì¢…ë£Œ
+    else:# Á¾·á
         break

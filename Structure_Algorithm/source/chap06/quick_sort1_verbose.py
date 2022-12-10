@@ -1,14 +1,14 @@
-# [Do it! ì‹¤ìŠµ 6C-3] í€µ ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ êµ¬í˜„(ë°°ì—´ì„ ë‚˜ëˆ„ëŠ” ê³¼ì • ì¶œë ¥)
+# [Do it! ½Ç½À 6C-3] Äü Á¤·Ä ¾Ë°í¸®Áò ±¸Çö(¹è¿­À» ³ª´©´Â °úÁ¤ Ãâ·Â)
 
 from typing import MutableSequence
 
 def qsort(a: MutableSequence, left: int, right: int) -> None:
-    """a[left] ~ a[right]ë¥¼ í€µ ì •ë ¬(ë°°ì—´ì„ ë‚˜ëˆ„ëŠ” ê³¼ì • ì¶œë ¥)"""
-    pl = left                   # ì™¼ìª½ ì»¤ì„œ
-    pr = right                  # ì˜¤ë¥¸ìª½ ì»¤ì„œ
-    x = a[(left + right) // 2]  # í”¼ë²—(ê°€ìš´ë° ì›ì†Œ)
+    """a[left] ~ a[right]¸¦ Äü Á¤·Ä(¹è¿­À» ³ª´©´Â °úÁ¤ Ãâ·Â)"""
+    pl = left                   # ¿ŞÂÊ Ä¿¼­
+    pr = right                  # ¿À¸¥ÂÊ Ä¿¼­
+    x = a[(left + right) // 2]  # ÇÇ¹ş(°¡¿îµ¥ ¿ø¼Ò)
 
-    print(f'a[{left}] ~ a[{right}]: ', *a[left : right + 1])  # ìƒˆë¡œ ì¶”ê°€ëœ ë¶€ë¶„
+    print(f'a[{left}] ~ a[{right}]: ', *a[left : right + 1])  # »õ·Î Ãß°¡µÈ ºÎºĞ
 
     while pl <= pr:                     
         while a[pl] < x: pl += 1
@@ -22,19 +22,19 @@ def qsort(a: MutableSequence, left: int, right: int) -> None:
     if pl < right: qsort(a, pl, right)
 
 def quick_sort(a: MutableSequence) -> None:
-    """í€µ ì •ë ¬"""
+    """Äü Á¤·Ä"""
     qsort(a, 0, len(a) - 1)
 
 if __name__ == '__main__':
-    print('í€µ ì •ë ¬ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤(ë°°ì—´ì„ ë‚˜ëˆ„ëŠ” ê³¼ì • ì¶œë ¥).')
-    num = int(input('ì›ì†Œ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
-    x = [None] * num    # ì›ì†Œ ìˆ˜ê°€ numì¸ ë°°ì—´ì„ ìƒì„±
+    print('Äü Á¤·ÄÀ» ¼öÇàÇÕ´Ï´Ù(¹è¿­À» ³ª´©´Â °úÁ¤ Ãâ·Â).')
+    num = int(input('¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
+    x = [None] * num    # ¿ø¼Ò ¼ö°¡ numÀÎ ¹è¿­À» »ı¼º
 
     for i in range(num):
         x[i] = int(input(f'x[{i}]: '))
 
-    quick_sort(x)       # ë°°ì—´ xë¥¼ í€µ ì •ë ¬
+    quick_sort(x)       # ¹è¿­ x¸¦ Äü Á¤·Ä
 
-    print('ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í–ˆìŠµë‹ˆë‹¤.')
+    print('¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇß½À´Ï´Ù.')
     for i in range(num):
         print(f'x[{i}] = {x[i]}')

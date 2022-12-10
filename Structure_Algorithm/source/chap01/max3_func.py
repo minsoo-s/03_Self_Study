@@ -1,11 +1,11 @@
-# [Do it! ì‹¤ìŠµ 1-2] # ì„¸ ì •ìˆ˜ì˜ ìµœëŒ“ê°’ì„ êµ¬í•˜ê¸°
+# [Do it! ½Ç½À 1-2] # ¼¼ Á¤¼öÀÇ ÃÖ´ñ°ªÀ» ±¸ÇÏ±â
 
 def max3(a, b, c):
-    """a, b, cì˜ ìµœëŒ“ê°’ì„ êµ¬í•˜ì—¬ ë°˜í™˜"""
+    """a, b, cÀÇ ÃÖ´ñ°ªÀ» ±¸ÇÏ¿© ¹ÝÈ¯"""
     maximum = a
     if b > maximum: maximum = b
     if c > maximum: maximum = c
-    return maximum  # ìµœëŒ“ê°’ ë°˜í™˜
+    return maximum  # ÃÖ´ñ°ª ¹ÝÈ¯
 
 print(f'max3(3, 2, 1) = {max3(3, 2, 1)}')   # [A] a > b > c
 print(f'max3(3, 2, 2) = {max3(3, 2, 2)}')   # [B] a > b = c

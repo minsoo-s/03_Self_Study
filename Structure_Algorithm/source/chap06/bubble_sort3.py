@@ -1,9 +1,9 @@
-# [Do it! ì‹¤ìŠµ 6-4] ë²„ë¸” ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ êµ¬í˜„í•˜ê¸°(ì•Œê³ ë¦¬ì¦˜ì˜ ê°œì„  2)
+# [Do it! ½Ç½À 6-4] ¹öºí Á¤·Ä ¾Ë°í¸®Áò ±¸ÇöÇÏ±â(¾Ë°í¸®ÁòÀÇ °³¼± 2)
 
 from typing import MutableSequence
 
 def bubble_sort(a: MutableSequence) -> None:
-    """ë²„ë¸” ì •ë ¬(ìŠ¤ìº” ë²”ìœ„ë¥¼ ì œí•œ)"""
+    """¹öºí Á¤·Ä(½ºÄµ ¹üÀ§¸¦ Á¦ÇÑ)"""
     n = len(a)
     k = 0
     while k < n - 1:
@@ -15,15 +15,15 @@ def bubble_sort(a: MutableSequence) -> None:
         k = last
 
 if __name__ == '__main__':
-    print('ë²„ë¸” ì •ë ¬ì„ í•©ë‹ˆë‹¤.')
-    num = int(input('ì›ì†Ÿìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
-    x = [None] * num    # ì›ì†Ÿìˆ˜ numì¸ ë°°ì—´ì„ ìƒì„±
+    print('¹öºí Á¤·ÄÀ» ÇÕ´Ï´Ù.')
+    num = int(input('¿ø¼Ú¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
+    x = [None] * num    # ¿ø¼Ú¼ö numÀÎ ¹è¿­À» »ı¼º
 
     for i in range(num):
         x[i] = int(input(f'x[{i}] : '))
 
-    bubble_sort(x)      # ë°°ì—´ xë¥¼ ë²„ë¸” ì •ë ¬
+    bubble_sort(x)      # ¹è¿­ x¸¦ ¹öºí Á¤·Ä
 
-    print('ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í–ˆìŠµë‹ˆë‹¤.')
+    print('¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇß½À´Ï´Ù.')
     for i in range(num):
         print(f'x[{i}] = {x[i]}')

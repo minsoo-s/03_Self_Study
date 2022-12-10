@@ -1,19 +1,19 @@
-# [Do it! ì‹¤ìŠµ 2-10] 1,000 ì´í•˜ì˜ ì†Œìˆ˜ë¥¼ ë‚˜ì—´í•˜ê¸°(ì•Œê³ ë¦¬ì¦˜ ê°œì„  2) - ë°°ì—´ì˜ ì›ì†Ÿìˆ˜ë¥¼ ë¯¸ë¦¬ ê²°ì •í•˜ì§€ ì•ŠìŒ
+# [Do it! ½Ç½À 2-10] 1,000 ÀÌÇÏÀÇ ¼Ò¼ö¸¦ ³ª¿­ÇÏ±â(¾Ë°í¸®Áò °³¼± 2) - ¹è¿­ÀÇ ¿ø¼Ú¼ö¸¦ ¹Ì¸® °áÁ¤ÇÏÁö ¾ÊÀ½
 
-counter = 0             # ê³±ì…ˆê³¼ ë‚˜ëˆ—ì…ˆì„ í•©í•œ íšŸìˆ˜
-prime = [2, 3]          # ì†Œìˆ˜ë¥¼ ì €ìž¥í•˜ëŠ” ë°°ì—´
+counter = 0             # °ö¼À°ú ³ª´°¼ÀÀ» ÇÕÇÑ È½¼ö
+prime = [2, 3]          # ¼Ò¼ö¸¦ ÀúÀåÇÏ´Â ¹è¿­
 
-for n in range(5, 1001, 2):     # í™€ìˆ˜ë§Œì„ ëŒ€ìƒìœ¼ë¡œ ì„¤ì •
+for n in range(5, 1001, 2):     # È¦¼ö¸¸À» ´ë»óÀ¸·Î ¼³Á¤
     i = 1
     while prime[i] * prime[i] <= n:
         counter += 2
-        if n % prime[i] == 0:   # ë‚˜ëˆ„ì–´ ë–¨ì–´ì§€ë¯€ë¡œ ì†Œìˆ˜ê°€ ì•„ë‹˜
-            break               # ë°˜ë³µ ì¤‘ë‹¨
+        if n % prime[i] == 0:   # ³ª´©¾î ¶³¾îÁö¹Ç·Î ¼Ò¼ö°¡ ¾Æ´Ô
+            break               # ¹Ýº¹ Áß´Ü
         i += 1
-    else:                       # ëê¹Œì§€ ë‚˜ëˆ„ì–´ ë–¨ì–´ì§€ì§€ ì•Šì•˜ë‹¤ë©´
-        prime += [n]            # ì†Œìˆ˜ë¡œ ë°°ì—´ì— ë“±ë¡
+    else:                       # ³¡±îÁö ³ª´©¾î ¶³¾îÁöÁö ¾Ê¾Ò´Ù¸é
+        prime += [n]            # ¼Ò¼ö·Î ¹è¿­¿¡ µî·Ï
         counter += 1
 
-for i in prime:                 # ì†Œìˆ˜ë¥¼ ì¶œë ¥
+for i in prime:                 # ¼Ò¼ö¸¦ Ãâ·Â
     print(i)
-print(f'ê³±ì…ˆê³¼ ë‚˜ëˆ—ì…ˆì„ ì‹¤í–‰í•œ íšŸìˆ˜: {counter}')
+print(f'°ö¼À°ú ³ª´°¼ÀÀ» ½ÇÇàÇÑ È½¼ö: {counter}')

@@ -1,107 +1,107 @@
-# Do it! ì‹¤ìŠµ 3-7 ì˜¤í”ˆ ì£¼ì†Œë²•ìœ¼ë¡œ í•´ì‹œí•¨ìˆ˜ êµ¬í˜„í•˜ê¸°
+# Do it! ½Ç½À 3-7 ¿ÀÇÂ ÁÖ¼Ò¹ıÀ¸·Î ÇØ½ÃÇÔ¼ö ±¸ÇöÇÏ±â
 
 from __future__ import annotations
 from typing import Any, Type
 from enum import Enum
 import hashlib
 
-# ë²„í‚·ì˜ ì†ì„±
+# ¹öÅ¶ÀÇ ¼Ó¼º
 class Status(Enum):
-    OCCUPIED = 0  # ë°ì´í„°ë¥¼ ì €ì¥
-    EMPTY = 1     # ë¹„ì–´ ìˆìŒ
-    DELETED = 2   # ì‚­ì œ ì™„ë£Œ
+    OCCUPIED = 0  # µ¥ÀÌÅÍ¸¦ ÀúÀå
+    EMPTY = 1     # ºñ¾î ÀÖÀ½
+    DELETED = 2   # »èÁ¦ ¿Ï·á
 
 class Bucket:
-    """í•´ì‹œë¥¼ êµ¬ì„±í•˜ëŠ” ë²„í‚·"""
+    """ÇØ½Ã¸¦ ±¸¼ºÇÏ´Â ¹öÅ¶"""
 
     def __init__(self, key: Any = None, value: Any = None,
                        stat: Status = Status.EMPTY) -> None:
-        """ì´ˆê¸°í™”"""
-        self.key = key      # í‚¤
-        self.value = value  # ê°’
-        self.stat = stat    # ì†ì„±
+        """ÃÊ±âÈ­"""
+        self.key = key      # Å°
+        self.value = value  # °ª
+        self.stat = stat    # ¼Ó¼º
 
     def set(self, key: Any, value: Any, stat: Status) -> None:
-        """ëª¨ë“  í•„ë“œì— ê°’ì„ ì„¤ì •"""
-        self.key = key      # í‚¤
-        self.value = value  # ê°’
-        self.stat = stat    # ì†ì„±
+        """¸ğµç ÇÊµå¿¡ °ªÀ» ¼³Á¤"""
+        self.key = key      # Å°
+        self.value = value  # °ª
+        self.stat = stat    # ¼Ó¼º
 
     def set_status(self, stat: Status) -> None:
-        """ì†ì„±ì„ ì„¤ì •"""
+        """¼Ó¼ºÀ» ¼³Á¤"""
         self.stat = stat
 
 class OpenHash:
-    """ì˜¤í”ˆ ì£¼ì†Œë²•ì„ êµ¬í˜„í•˜ëŠ” í•´ì‹œ í´ë˜ìŠ¤"""
+    """¿ÀÇÂ ÁÖ¼Ò¹ıÀ» ±¸ÇöÇÏ´Â ÇØ½Ã Å¬·¡½º"""
 
     def __init__(self, capacity: int) -> None:
-        """ì´ˆê¸°í™”"""
-        self.capacity = capacity                 # í•´ì‹œ í…Œì´ë¸”ì˜ í¬ê¸°ë¥¼ ì§€ì •
-        self.table = [Bucket()] * self.capacity  # í•´ì‹œ í…Œì´ë¸”
+        """ÃÊ±âÈ­"""
+        self.capacity = capacity                 # ÇØ½Ã Å×ÀÌºíÀÇ Å©±â¸¦ ÁöÁ¤
+        self.table = [Bucket()] * self.capacity  # ÇØ½Ã Å×ÀÌºí
 
     def hash_value(self, key: Any) -> int:
-        """í•´ì‹œê°’ì„ êµ¬í•¨"""
+        """ÇØ½Ã°ªÀ» ±¸ÇÔ"""
         if isinstance(key, int):
             return key % self.capacity
         return(int(hashlib.md5(str(key).encode()).hexdigest(), 16)
                 % self.capacity)
 
     def rehash_value(self, key: Any) -> int:
-        """ì¬í•´ì‹œê°’ì„ êµ¬í•¨"""
+        """ÀçÇØ½Ã°ªÀ» ±¸ÇÔ"""
         return(self.hash_value(key) + 1) % self.capacity
 
     def search_node(self, key: Any) -> Any:
-        """í‚¤ê°€ keyì¸ ë²„í‚·ì„ ê²€ìƒ‰"""
-        hash = self.hash_value(key)  # ê²€ìƒ‰í•˜ëŠ” í‚¤ì˜ í•´ì‹œê°’
-        p = self.table[hash]         # ë²„í‚·ì„ ì£¼ëª©
+        """Å°°¡ keyÀÎ ¹öÅ¶À» °Ë»ö"""
+        hash = self.hash_value(key)  # °Ë»öÇÏ´Â Å°ÀÇ ÇØ½Ã°ª
+        p = self.table[hash]         # ¹öÅ¶À» ÁÖ¸ñ
 
         for i in range(self.capacity):
             if p.stat == Status.EMPTY:
                 break
             elif p.stat == Status.OCCUPIED and p.key == key:
                 return p
-            hash = self.rehash_value(hash)  # ì¬í•´ì‹œ
+            hash = self.rehash_value(hash)  # ÀçÇØ½Ã
             p = self.table[hash]
         return None
 
     def search(self, key: Any) -> Any:
-        """í‚¤ê°€ keyì¸ ê°–ëŠ” ì›ì†Œë¥¼ ê²€ìƒ‰í•˜ì—¬ ê°’ì„ ë°˜í™˜"""
+        """Å°°¡ keyÀÎ °®´Â ¿ø¼Ò¸¦ °Ë»öÇÏ¿© °ªÀ» ¹İÈ¯"""
         p = self.search_node(key)
         if p is not None:
-            return p.value  # ê²€ìƒ‰ ì„±ê³µ
+            return p.value  # °Ë»ö ¼º°ø
         else:
-            return None     # ê²€ìƒ‰ ì‹¤íŒ¨
+            return None     # °Ë»ö ½ÇÆĞ
 
     def add(self, key: Any, value: Any) -> bool:
-        """í‚¤ê°€ keyì´ê³  ê°’ì´ valueì¸ ìš”ì†Œë¥¼ ì¶”ê°€"""
+        """Å°°¡ keyÀÌ°í °ªÀÌ valueÀÎ ¿ä¼Ò¸¦ Ãß°¡"""
         if self.search(key) is not None:
-            return False             # ì´ë¯¸ ë“±ë¡ëœ í‚¤
+            return False             # ÀÌ¹Ì µî·ÏµÈ Å°
 
-        hash = self.hash_value(key)  # ì¶”ê°€í•˜ëŠ” í‚¤ì˜ í•´ì‹œê°’
-        p = self.table[hash]         # ë²„í‚·ì„ ì£¼ëª©
+        hash = self.hash_value(key)  # Ãß°¡ÇÏ´Â Å°ÀÇ ÇØ½Ã°ª
+        p = self.table[hash]         # ¹öÅ¶À» ÁÖ¸ñ
         for i in range(self.capacity):
             if p.stat == Status.EMPTY or p.stat == Status.DELETED:
                 self.table[hash] = Bucket(key, value, Status.OCCUPIED)
                 return True
-            hash = self.rehash_value(hash)  # ì¬í•´ì‹œ
+            hash = self.rehash_value(hash)  # ÀçÇØ½Ã
             p = self.table[hash]
-        return False                        # í•´ì‹œ í…Œì´ë¸”ì´ ê°€ë“ ì°¸
+        return False                        # ÇØ½Ã Å×ÀÌºíÀÌ °¡µæ Âü
 
     def remove(self, key: Any) -> int:
-        """í‚¤ê°€ keyì¸ ê°–ëŠ” ìš”ì†Œë¥¼ ì‚­ì œ"""
-        p = self.search_node(key)  # ë²„í‚·ì„ ì£¼ëª©
+        """Å°°¡ keyÀÎ °®´Â ¿ä¼Ò¸¦ »èÁ¦"""
+        p = self.search_node(key)  # ¹öÅ¶À» ÁÖ¸ñ
         if p is None:
-            return False           # ì´ í‚¤ëŠ” ë“±ë¡ë˜ì–´ ìˆì§€ ì•ŠìŒ
+            return False           # ÀÌ Å°´Â µî·ÏµÇ¾î ÀÖÁö ¾ÊÀ½
         p.set_status(Status.DELETED)
         return True
 
     def dump(self) -> None:
-        """í•´ì‹œ í…Œì´ë¸”ì„ ë¤í”„"""
+        """ÇØ½Ã Å×ÀÌºíÀ» ´ıÇÁ"""
         for i in range(self.capacity):
             print(f'{i:2} ', end='')
             if self.table[i].stat == Status.OCCUPIED:
                 print(f'{self.table[i].key} ({self.table[i].value})')
             elif self.table[i].stat == Status.EMPTY:
-                print('-- ë¯¸ë“±ë¡ --')
+                print('-- ¹Ìµî·Ï --')
             elif self.table[i] .stat == Status.DELETED:
-                print('-- ì‚­ì œ ì™„ë£Œ --')
+                print('-- »èÁ¦ ¿Ï·á --')

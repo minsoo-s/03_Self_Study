@@ -1,17 +1,17 @@
-# [Do it! ì‹¤ìŠµ 6-15] ë³‘í•© ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ êµ¬í˜„í•˜ê¸°
+# [Do it! ½Ç½À 6-15] º´ÇÕ Á¤·Ä ¾Ë°í¸®Áò ±¸ÇöÇÏ±â
 
 from typing import MutableSequence
 
 def merge_sort(a: MutableSequence) -> None:
-    """ë³‘í•© ì •ë ¬"""
+    """º´ÇÕ Á¤·Ä"""
 
     def _merge_sort(a: MutableSequence, left: int, right: int) -> None:
-        """a[left] ~ a[right]ë¥¼ ì¬ê·€ì ìœ¼ë¡œ ë³‘í•© ì •ë ¬"""
+        """a[left] ~ a[right]¸¦ Àç±ÍÀûÀ¸·Î º´ÇÕ Á¤·Ä"""
         if left < right:
             center = (left + right) // 2
 
-            _merge_sort(a, left, center)            # ë°°ì—´ ì•ë¶€ë¶„ì„ ë³‘í•© ì •ë ¬
-            _merge_sort(a, center + 1, right)       # ë°°ì—´ ë’·ë¶€ë¶„ì„ ë³‘í•© ì •ë ¬
+            _merge_sort(a, left, center)            # ¹è¿­ ¾ÕºÎºĞÀ» º´ÇÕ Á¤·Ä
+            _merge_sort(a, center + 1, right)       # ¹è¿­ µŞºÎºĞÀ» º´ÇÕ Á¤·Ä
 
             p = j = 0
             i = k = left
@@ -36,20 +36,20 @@ def merge_sort(a: MutableSequence) -> None:
                 j += 1
 
     n = len(a)
-    buff = [None] * n           # ì‘ì—…ìš© ë°°ì—´ì„ ìƒì„±
-    _merge_sort(a, 0, n - 1)    # ë°°ì—´ ì „ì²´ë¥¼ ë³‘í•© ì •ë ¬
-    del buff                    # ì‘ì—…ìš© ë°°ì—´ì„ ì†Œë©¸
+    buff = [None] * n           # ÀÛ¾÷¿ë ¹è¿­À» »ı¼º
+    _merge_sort(a, 0, n - 1)    # ¹è¿­ ÀüÃ¼¸¦ º´ÇÕ Á¤·Ä
+    del buff                    # ÀÛ¾÷¿ë ¹è¿­À» ¼Ò¸ê
 
 if __name__ == '__main__':
-    print('ë³‘í•© ì •ë ¬ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤')
-    num = int(input('ì›ì†Œ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
-    x = [None] * num    # ì›ì†Œ ìˆ˜ê°€ numì¸ ë°°ì—´ì„ ìƒì„±
+    print('º´ÇÕ Á¤·ÄÀ» ¼öÇàÇÕ´Ï´Ù')
+    num = int(input('¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
+    x = [None] * num    # ¿ø¼Ò ¼ö°¡ numÀÎ ¹è¿­À» »ı¼º
 
     for i in range(num):
         x[i] = int(input(f'x[{i}]: '))
 
-    merge_sort(x)       # ë°°ì—´ xë¥¼ ë³‘í•© ì •ë ¬
+    merge_sort(x)       # ¹è¿­ x¸¦ º´ÇÕ Á¤·Ä
 
-    print('ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í–ˆìŠµë‹ˆë‹¤.')
+    print('¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇß½À´Ï´Ù.')
     for i in range(num):
         print(f'x[{i}] = {x[i]}')

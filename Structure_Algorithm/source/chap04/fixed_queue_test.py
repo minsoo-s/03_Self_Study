@@ -1,12 +1,12 @@
-# [Do it! ì‹¤ìŠµ 4-4] ê³ ì • ê¸¸ì´ í í´ë˜ìŠ¤(FixedQueue)ë¥¼ ì‚¬ìš©í•˜ê¸°
+# [Do it! ½Ç½À 4-4] °íÁ¤ ±æÀÌ Å¥ Å¬·¡½º(FixedQueue)¸¦ »ç¿ëÇÏ±â
 
 from enum import Enum
 from fixed_queue import FixedQueue
 
-Menu = Enum('Menu', ['ì¸í', 'ë””í', 'í”¼í¬', 'ê²€ìƒ‰', 'ë¤í”„', 'ì¢…ë£Œ'])
+Menu = Enum('Menu', ['ÀÎÅ¥', 'µğÅ¥', 'ÇÇÅ©', '°Ë»ö', '´ıÇÁ', 'Á¾·á'])
 
 def select_menu() -> Menu:
-    """ë©”ë‰´ ì„ íƒ"""
+    """¸Ş´º ¼±ÅÃ"""
     s = [f'({m.value}){m.name}' for m in Menu]
     while True:
         print(*s, sep='   ', end='')
@@ -14,41 +14,41 @@ def select_menu() -> Menu:
         if 1 <= n <= len(Menu):
             return Menu(n)
 
-q = FixedQueue(64)  # ìµœëŒ€ 64ê°œë¥¼ ì¸íí•  ìˆ˜ ìˆëŠ” í ìƒì„±(ê³ ì • ê¸¸ì´)
+q = FixedQueue(64)  # ÃÖ´ë 64°³¸¦ ÀÎÅ¥ÇÒ ¼ö ÀÖ´Â Å¥ »ı¼º(°íÁ¤ ±æÀÌ)
 
 while True:
-    print(f'í˜„ì¬ ë°ì´í„° ê°œìˆ˜: {len(q)} / {q.capacity}')
-    menu = select_menu()   # ë©”ë‰´ ì„ íƒ
+    print(f'ÇöÀç µ¥ÀÌÅÍ °³¼ö: {len(q)} / {q.capacity}')
+    menu = select_menu()   # ¸Ş´º ¼±ÅÃ
 
-    if menu == Menu.ì¸í:  # ì¸í
-        x = int(input('ì¸íí•  ë°ì´í„°ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
+    if menu == Menu.ÀÎÅ¥:  # ÀÎÅ¥
+        x = int(input('ÀÎÅ¥ÇÒ µ¥ÀÌÅÍ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
         try:
             q.enque(x)
         except FixedQueue.Full:
-            print('íê°€ ê°€ë“ ì°¼ìŠµë‹ˆë‹¤.')
+            print('Å¥°¡ °¡µæ Ã¡½À´Ï´Ù.')
 
-    elif menu == Menu.ë””í:  # ë””í
+    elif menu == Menu.µğÅ¥:  # µğÅ¥
         try:
             x = q.deque()
-            print(f'ë””íí•œ ë°ì´í„°ëŠ” {x}ì…ë‹ˆë‹¤.')
+            print(f'µğÅ¥ÇÑ µ¥ÀÌÅÍ´Â {x}ÀÔ´Ï´Ù.')
         except FixedQueue.Empty:
-            print('íê°€ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤.')
+            print('Å¥°¡ ºñ¾î ÀÖ½À´Ï´Ù.')
 
-    elif menu == Menu.í”¼í¬:  # í”¼í¬
+    elif menu == Menu.ÇÇÅ©:  # ÇÇÅ©
         try:
             x = q.peek()
-            print(f'í”¼í¬í•œ ë°ì´í„°ëŠ” {x}ì…ë‹ˆë‹¤.')
+            print(f'ÇÇÅ©ÇÑ µ¥ÀÌÅÍ´Â {x}ÀÔ´Ï´Ù.')
         except FixedQueue.Empty:
-            print('íê°€ ë¹„ì—ˆìŠµë‹ˆë‹¤.')
+            print('Å¥°¡ ºñ¾ú½À´Ï´Ù.')
 
-    elif menu == Menu.ê²€ìƒ‰:  # ê²€ìƒ‰
-        x = int(input('ê²€ìƒ‰í•  ê°’ì„ ì…ë ¥í•˜ì„¸ìš”.: '))
+    elif menu == Menu.°Ë»ö:  # °Ë»ö
+        x = int(input('°Ë»öÇÒ °ªÀ» ÀÔ·ÂÇÏ¼¼¿ä.: '))
         if x in q:
-            print(f'{q.count(x)}ê°œ í¬í•¨ë˜ê³ , ë§¨ ì•ì˜ ìœ„ì¹˜ëŠ” {q.find(x)}ì…ë‹ˆë‹¤.')
+            print(f'{q.count(x)}°³ Æ÷ÇÔµÇ°í, ¸Ç ¾ÕÀÇ À§Ä¡´Â {q.find(x)}ÀÔ´Ï´Ù.')
         else:
-            print('ê²€ìƒ‰ê°’ì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.')
+            print('°Ë»ö°ªÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù.')
 
-    elif menu == Menu.ë¤í”„:  # ë¤í”„
+    elif menu == Menu.´ıÇÁ:  # ´ıÇÁ
         q.dump()
     else:
         break

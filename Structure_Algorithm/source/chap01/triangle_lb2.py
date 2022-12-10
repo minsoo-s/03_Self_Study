@@ -1,9 +1,9 @@
-# ì™¼ìª½ ì•„ëž˜ê°€ ì§ê°ì¸ ì´ë“±ë³€ ì‚¼ê°í˜•ìœ¼ë¡œ * ì¶œë ¥í•˜ê¸°(ì–¸ë”ìŠ¤ì½”ì–´ ì‚¬ìš©)
+# ¿ÞÂÊ ¾Æ·¡°¡ Á÷°¢ÀÎ ÀÌµîº¯ »ï°¢ÇüÀ¸·Î * Ãâ·ÂÇÏ±â(¾ð´õ½ºÄÚ¾î »ç¿ë)
 
-print('ì™¼ìª½ ì•„ëž˜ê°€ ì§ê°ì¸ ì´ë“±ë³€ ì‚¼ê°í˜•ì„ ì¶œë ¥í•©ë‹ˆë‹¤.')
-n = int(input('ì§§ì€ ë³€ì˜ ê¸¸ì´ë¥¼ ìž…ë ¥í•˜ì„¸ìš”.: '))
+print('¿ÞÂÊ ¾Æ·¡°¡ Á÷°¢ÀÎ ÀÌµîº¯ »ï°¢ÇüÀ» Ãâ·ÂÇÕ´Ï´Ù.')
+n = int(input('ÂªÀº º¯ÀÇ ±æÀÌ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
 
-for i in range(n):          # í–‰ ë£¨í”„
-    for _ in range(i + 1):  # ì—´ ë£¨í”„
+for i in range(n):          # Çà ·çÇÁ
+    for _ in range(i + 1):  # ¿­ ·çÇÁ
         print('*', end='')
     print()

@@ -1,23 +1,23 @@
-# [Do it! ì‹¤ìŠµ 5-5] ìŠ¤íƒìœ¼ë¡œ ì¬ê·€ í•¨ìˆ˜ êµ¬í˜„í•˜ê¸°(ì¬ê·€ë¥¼ ì œê±°)
+# [Do it! ½Ç½À 5-5] ½ºÅÃÀ¸·Î Àç±Í ÇÔ¼ö ±¸ÇöÇÏ±â(Àç±Í¸¦ Á¦°Å)
 
-from stack import Stack  # stack.pyì˜ Stack í´ë˜ìŠ¤ë¥¼ ì„í¬íŠ¸
+from stack import Stack  # stack.pyÀÇ Stack Å¬·¡½º¸¦ ÀÓÆ÷Æ®
 
 def recur(n: int) -> int:
-    """ì¬ê·€ë¥¼ ì œê±°í•œ í•¨ìˆ˜ recur"""
+    """Àç±Í¸¦ Á¦°ÅÇÑ ÇÔ¼ö recur"""
     s = Stack(n)
 
     while True:
         if n > 0:
-            s.push(n)         # n ê°’ì„ í‘¸ì‹œ
+            s.push(n)         # n °ªÀ» Çª½Ã
             n = n - 1
             continue
-        if not s.is_empty():  # ìŠ¤íƒì´ ë¹„ì–´ ìˆì§€ ì•Šìœ¼ë©´
-            n = s.pop()       # ì €ì¥í•˜ê³  ìˆëŠ” ê°’ì„ nì— íŒ
+        if not s.is_empty():  # ½ºÅÃÀÌ ºñ¾î ÀÖÁö ¾ÊÀ¸¸é
+            n = s.pop()       # ÀúÀåÇÏ°í ÀÖ´Â °ªÀ» n¿¡ ÆË
             print(n)
             n = n - 2
             continue
         break
 
-x = int(input('ì •ìˆ˜ê°’ì„ ì…ë ¥í•˜ì„¸ìš”.: '))
+x = int(input('Á¤¼ö°ªÀ» ÀÔ·ÂÇÏ¼¼¿ä.: '))
 
 recur(x)

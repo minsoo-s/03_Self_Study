@@ -1,53 +1,53 @@
-# ê³ ì • ê¸¸ì´ í í´ë˜ìŠ¤ FixedQueue êµ¬í˜„í•˜ê¸°
-# Do it! ì‹¤ìŠµ 4-3 [A]
+# °íÁ¤ ±æÀÌ Å¥ Å¬·¡½º FixedQueue ±¸ÇöÇÏ±â
+# Do it! ½Ç½À 4-3 [A]
 from typing import Any
 
 class FixedQueue:
 
     class Empty(Exception):
-        """ë¹„ì–´ ìˆëŠ” FixedQueueì— ëŒ€í•´ deque ë˜ëŠ” peekë¥¼ í˜¸ì¶œí•  ë•Œ ë‚´ë³´ë‚´ëŠ” ì˜ˆì™¸ì²˜ë¦¬"""
+        """ºñ¾î ÀÖ´Â FixedQueue¿¡ ´ëÇØ deque ¶Ç´Â peek¸¦ È£ÃâÇÒ ¶§ ³»º¸³»´Â ¿¹¿ÜÃ³¸®"""
         pass
 
     class Full(Exception):
-        """ê°€ë“ ì°¬ FixedQueueì— enqueë¥¼ í˜¸ì¶œí•  ë•Œ ë‚´ë³´ë‚´ëŠ” ì˜ˆì™¸ì²˜ë¦¬"""
+        """°¡µæ Âù FixedQueue¿¡ enque¸¦ È£ÃâÇÒ ¶§ ³»º¸³»´Â ¿¹¿ÜÃ³¸®"""
         pass
 
     def __init__(self, capacity: int) -> None:
-        """ì´ˆê¸°í™” ì„ ì–¸"""
-        self.no = 0     # í˜„ì¬ ë°ì´í„° ê°œìˆ˜
-        self.front = 0  # ë§¨ì• ì›ì†Œ ì»¤ì„œ
-        self.rear = 0   # ë§¨ë ì›ì†Œ  ì»¤ì„œ
-        self.capacity = capacity      # íì˜ í¬ê¸°
-        self.que = [None] * capacity  # íì˜ ë³¸ì²´
+        """ÃÊ±âÈ­ ¼±¾ğ"""
+        self.no = 0     # ÇöÀç µ¥ÀÌÅÍ °³¼ö
+        self.front = 0  # ¸Ç¾Õ ¿ø¼Ò Ä¿¼­
+        self.rear = 0   # ¸Ç³¡ ¿ø¼Ò  Ä¿¼­
+        self.capacity = capacity      # Å¥ÀÇ Å©±â
+        self.que = [None] * capacity  # Å¥ÀÇ º»Ã¼
 
     def __len__(self) -> int:
-        """íì— ìˆëŠ” ëª¨ë“  ë°ì´í„° ê°œìˆ˜ë¥¼ ë°˜í™˜"""
+        """Å¥¿¡ ÀÖ´Â ¸ğµç µ¥ÀÌÅÍ °³¼ö¸¦ ¹İÈ¯"""
         return self.no
 
     def is_empty(self) -> bool:
-        """íê°€ ë¹„ì–´ ìˆëŠ”ì§€ íŒë‹¨"""
+        """Å¥°¡ ºñ¾î ÀÖ´ÂÁö ÆÇ´Ü"""
         return self.no <= 0
 
     def is_full(self) -> bool:
-        """íê°€ ê°€ë“ ì°¼ëŠ”ì§€ íŒë‹¨"""
+        """Å¥°¡ °¡µæ Ã¡´ÂÁö ÆÇ´Ü"""
         return self.no >= self.capacity
 
-# Do it! ì‹¤ìŠµ 4-3 [B]
+# Do it! ½Ç½À 4-3 [B]
     def enque(self, x: Any) -> None:
-        """ë°ì´í„° xë¥¼ ì¸í"""
+        """µ¥ÀÌÅÍ x¸¦ ÀÎÅ¥"""
         if self.is_full():
-            raise FixedQueue.Full  # íê°€ ê°€ë“ ì°¬ ê²½ìš° ì˜ˆì™¸ì²˜ë¦¬ë¥¼ ë°œìƒ
+            raise FixedQueue.Full  # Å¥°¡ °¡µæ Âù °æ¿ì ¿¹¿ÜÃ³¸®¸¦ ¹ß»ı
         self.que[self.rear] = x
         self.rear += 1
         self.no += 1
         if self.rear == self.capacity:
             self.rear = 0
 
-# Do it! ì‹¤ìŠµ 4-3 [C]
+# Do it! ½Ç½À 4-3 [C]
     def deque(self) -> Any:
-        """ë°ì´í„°ë¥¼ ë””íí•©ë‹ˆë‹¤"""
+        """µ¥ÀÌÅÍ¸¦ µğÅ¥ÇÕ´Ï´Ù"""
         if self.is_empty():
-            raise FixedQueue.Empty  # íê°€ ë¹„ì–´ ìˆëŠ” ê²½ìš° ì˜ˆì™¸ì²˜ë¦¬ë¥¼ ë°œìƒ
+            raise FixedQueue.Empty  # Å¥°¡ ºñ¾î ÀÖ´Â °æ¿ì ¿¹¿ÜÃ³¸®¸¦ ¹ß»ı
         x = self.que[self.front]
         self.front += 1
         self.no -= 1
@@ -55,42 +55,42 @@ class FixedQueue:
             self.front = 0
         return x
 
-# Do it! ì‹¤ìŠµ 4-3 [D]
+# Do it! ½Ç½À 4-3 [D]
     def peek(self) -> Any:
-        """ë°ì´í„°ë¥¼ í”¼í¬í•©ë‹ˆë‹¤(ë§¨ ì• ë°ì´í„°ë¥¼ ë“¤ì—¬ë‹¤ ë´„)"""
+        """µ¥ÀÌÅÍ¸¦ ÇÇÅ©ÇÕ´Ï´Ù(¸Ç ¾Õ µ¥ÀÌÅÍ¸¦ µé¿©´Ù º½)"""
         if self.is_empty():
-            raise FixedQueue.Empty  # íê°€ ë¹„ì–´ ìˆìœ¼ë©´ ì˜ˆì™¸ì²˜ë¦¬ë¥¼ ë°œìƒ
+            raise FixedQueue.Empty  # Å¥°¡ ºñ¾î ÀÖÀ¸¸é ¿¹¿ÜÃ³¸®¸¦ ¹ß»ı
         return self.que[self.front]
 
     def find(self, value: Any) -> Any:
-        """íì—ì„œ valueë¥¼ ì°¾ì•„ ì¸ë±ìŠ¤ë¥¼ ë°˜í™˜í•˜ê³  ì—†ìœ¼ë©´ -1ì„ ë°˜í™˜í•©ë‹ˆë‹¤"""
+        """Å¥¿¡¼­ value¸¦ Ã£¾Æ ÀÎµ¦½º¸¦ ¹İÈ¯ÇÏ°í ¾øÀ¸¸é -1À» ¹İÈ¯ÇÕ´Ï´Ù"""
         for i in range(self.no):
             idx = (i + self.front) % self.capacity
-            if self.que[idx] == value:  # ê²€ìƒ‰ ì„±ê³µ
+            if self.que[idx] == value:  # °Ë»ö ¼º°ø
                 return idx
-        return -1  # ê²€ìƒ‰ ì‹¤íŒ¨
+        return -1  # °Ë»ö ½ÇÆĞ
 
     def count(self, value: Any) -> bool:
-        """íì— í¬í•¨ë˜ì–´ ìˆëŠ” valueì˜ ê°œìˆ˜ë¥¼ ë°˜í™˜í•©ë‹ˆë‹¤"""
+        """Å¥¿¡ Æ÷ÇÔµÇ¾î ÀÖ´Â valueÀÇ °³¼ö¸¦ ¹İÈ¯ÇÕ´Ï´Ù"""
         c = 0
-        for i in range(self.no):  # í ë°ì´í„°ë¥¼ ì„ í˜• ê²€ìƒ‰
+        for i in range(self.no):  # Å¥ µ¥ÀÌÅÍ¸¦ ¼±Çü °Ë»ö
             idx = (i + self.front) % self.capacity
-            if self.que[idx] == value:  # ê²€ìƒ‰ ì„±ê³µ
-                c += 1  # ë“¤ì–´ìˆìŒ
+            if self.que[idx] == value:  # °Ë»ö ¼º°ø
+                c += 1  # µé¾îÀÖÀ½
         return c
 
     def __contains__(self, value: Any) -> bool:
-        """íì— valueê°€ í¬í•¨ë˜ì–´ ìˆëŠ”ì§€ íŒë‹¨í•©ë‹ˆë‹¤"""
+        """Å¥¿¡ value°¡ Æ÷ÇÔµÇ¾î ÀÖ´ÂÁö ÆÇ´ÜÇÕ´Ï´Ù"""
         return self.count(value)
 
     def clear(self) -> None:
-        """íì˜ ëª¨ë“  ë°ì´í„°ë¥¼ ë¹„ì›ë‹ˆë‹¤"""
+        """Å¥ÀÇ ¸ğµç µ¥ÀÌÅÍ¸¦ ºñ¿ó´Ï´Ù"""
         self.no = self.front = self.rear = 0
 
     def dump(self) -> None:
-        """ëª¨ë“  ë°ì´í„°ë¥¼ ë§¨ ì•ì—ì„œ ë§¨ ë ìˆœì„œë¡œ ì¶œë ¥í•©ë‹ˆë‹¤"""
-        if self.is_empty():  # íê°€ ë¹„ì–´ ìˆìœ¼ë©´ ì˜ˆì™¸ì²˜ë¦¬ë¥¼ ë°œìƒ
-            print('íê°€ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤.')
+        """¸ğµç µ¥ÀÌÅÍ¸¦ ¸Ç ¾Õ¿¡¼­ ¸Ç ³¡ ¼ø¼­·Î Ãâ·ÂÇÕ´Ï´Ù"""
+        if self.is_empty():  # Å¥°¡ ºñ¾î ÀÖÀ¸¸é ¿¹¿ÜÃ³¸®¸¦ ¹ß»ı
+            print('Å¥°¡ ºñ¾î ÀÖ½À´Ï´Ù.')
         else:
             for i in range(self.no):
                 print(self.que[(i + self.front) % self.capacity], end=' ')

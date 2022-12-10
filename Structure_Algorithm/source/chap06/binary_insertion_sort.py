@@ -1,18 +1,18 @@
-# [Do it! ì‹¤ìŠµ 6C-1] ì´ì§„ ì‚½ìž… ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ êµ¬í˜„í•˜ê¸°
+# [Do it! ½Ç½À 6C-1] ÀÌÁø »ðÀÔ Á¤·Ä ¾Ë°í¸®Áò ±¸ÇöÇÏ±â
 
 from typing import MutableSequence
 
 def binary_insertion_sort(a: MutableSequence) -> None:
-    """ì´ì§„ ì‚½ìž… ì •ë ¬"""
+    """ÀÌÁø »ðÀÔ Á¤·Ä"""
     n = len(a)
     for i in range(1, n):
         key = a[i]
-        pl = 0      # ê²€ìƒ‰ ë²”ìœ„ì˜ ë§¨ ì•ž ì›ì†Œ ì¸ë±ìŠ¤
-        pr = i - 1  # ê²€ìƒ‰ ë²”ìœ„ì˜ ë§¨ ë ì›ì†Œ ì¸ë±ìŠ¤
+        pl = 0      # °Ë»ö ¹üÀ§ÀÇ ¸Ç ¾Õ ¿ø¼Ò ÀÎµ¦½º
+        pr = i - 1  # °Ë»ö ¹üÀ§ÀÇ ¸Ç ³¡ ¿ø¼Ò ÀÎµ¦½º
 
         while True:
-            pc = (pl + pr) // 2  # ê²€ìƒ‰ ë²”ìœ„ì˜ ì¤‘ì•™ ì›ì†Œ ì¸ë±ìŠ¤
-            if a[pc] == key:     # ê²€ìƒ‰ ì„±ê³µ
+            pc = (pl + pr) // 2  # °Ë»ö ¹üÀ§ÀÇ Áß¾Ó ¿ø¼Ò ÀÎµ¦½º
+            if a[pc] == key:     # °Ë»ö ¼º°ø
                 break
             elif a[pc] < key:
                 pl = pc + 1
@@ -21,22 +21,22 @@ def binary_insertion_sort(a: MutableSequence) -> None:
             if pl > pr:
                 break
     
-        pd = pc + 1 if pl <= pr else pr + 1  # ì‚½ìž…í•  ìœ„ì¹˜ì˜ ì¸ë±ìŠ¤
+        pd = pc + 1 if pl <= pr else pr + 1  # »ðÀÔÇÒ À§Ä¡ÀÇ ÀÎµ¦½º
 
         for j in range(i, pd, -1):
             a[j] = a[j - 1]
         a[pd] = key
 
 if __name__ == "__main__":
-    print("ì´ì§„ ì‚½ìž… ì •ë ¬ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤.")
-    num = int(input("ì›ì†Œ ìˆ˜ë¥¼ ìž…ë ¥í•˜ì„¸ìš”.: "))
-    x = [None] * num          # ì›ì†Œ ìˆ˜ê°€ numì¸ ë°°ì—´ì„ ìƒì„±
+    print("ÀÌÁø »ðÀÔ Á¤·ÄÀ» ¼öÇàÇÕ´Ï´Ù.")
+    num = int(input("¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: "))
+    x = [None] * num          # ¿ø¼Ò ¼ö°¡ numÀÎ ¹è¿­À» »ý¼º
 
     for i in range(num):
         x[i] = int(input(f"x[{i}]: "))
 
-    binary_insertion_sort(x)  # ë°°ì—´ xë¥¼ ì´ì§„ ì‚½ìž… ì •ë ¬
+    binary_insertion_sort(x)  # ¹è¿­ x¸¦ ÀÌÁø »ðÀÔ Á¤·Ä
 
-    print("ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í–ˆìŠµë‹ˆë‹¤.")
+    print("¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇß½À´Ï´Ù.")
     for i in range(num):
         print(f"x[{i}] = {x[i]}")

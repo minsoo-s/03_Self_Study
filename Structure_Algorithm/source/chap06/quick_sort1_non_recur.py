@@ -1,43 +1,43 @@
-# [Do it! ì‹¤ìŠµ 6-12] í€µ ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ êµ¬í˜„(ë¹„ì¬ê·€ì ì¸ í€µ ì •ë ¬)
+# [Do it! ½Ç½À 6-12] Äü Á¤·Ä ¾Ë°í¸®Áò ±¸Çö(ºñÀç±ÍÀûÀÎ Äü Á¤·Ä)
 
-from stack import Stack  # ì‹¤ìŠµ 4C-1ì˜ íŒŒì¼ import
+from stack import Stack  # ½Ç½À 4C-1ÀÇ ÆÄÀÏ import
 from typing import MutableSequence
 
 def qsort(a: MutableSequence, left: int, right: int) -> None:
-    """a[left] ~ a [right]ë¥¼ í€µ ì •ë ¬(ë¹„ì¬ê·€ ë²„ì „)"""
-    range = Stack(right - left + 1)  # ìŠ¤íƒ ìƒì„±
+    """a[left] ~ a [right]¸¦ Äü Á¤·Ä(ºñÀç±Í ¹öÀü)"""
+    range = Stack(right - left + 1)  # ½ºÅÃ »ı¼º
 
     range.push((left, right))
 
     while not range.is_empty():
-        pl, pr = left, right = range.pop()  # ì™¼ìª½, ì˜¤ë¥¸ìª½ ì»¤ì„œë¥¼ êº¼ëƒ„
-        x = a[(left + right) // 2]          # í”¼ë²—(ì¤‘ì•™ ìš”ì†Œ)
+        pl, pr = left, right = range.pop()  # ¿ŞÂÊ, ¿À¸¥ÂÊ Ä¿¼­¸¦ ²¨³¿
+        x = a[(left + right) // 2]          # ÇÇ¹ş(Áß¾Ó ¿ä¼Ò)
 
         while pl <= pr:
             while a[pl] < x: pl += 1
             while a[pr] > x: pr -= 1
-            if pl <= pr:                        # ì‹¤ìŠµ 6-10, ì‹¤ìŠµ 6-11ê³¼ ê°™ìŒ
+            if pl <= pr:                        # ½Ç½À 6-10, ½Ç½À 6-11°ú °°À½
                 a[pl], a[pr] = a[pr], a[pl]
                 pl += 1
                 pr -= 1
 
-        if left < pr: range.push((left, pr))    # ì™¼ìª½ ê·¸ë£¹ì˜ ì»¤ì„œë¥¼ ì €ì¥
-        if pl < right: range.push((pl, right))  # ì˜¤ë¥¸ìª½ ê·¸ë£¹ì˜ ì»¤ì„œë¥¼ ì €ì¥
+        if left < pr: range.push((left, pr))    # ¿ŞÂÊ ±×·ìÀÇ Ä¿¼­¸¦ ÀúÀå
+        if pl < right: range.push((pl, right))  # ¿À¸¥ÂÊ ±×·ìÀÇ Ä¿¼­¸¦ ÀúÀå
 
 def quick_sort(a: MutableSequence) -> None:
-    """í€µ ì •ë ¬"""
+    """Äü Á¤·Ä"""
     qsort(a, 0, len(a) - 1)
 
 if __name__ == '__main__':
-    print('ë¹„ì¬ê·€ì ì¸ í€µ ì •ë ¬')
-    num = int(input('ì›ì†Œ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
-    x = [None] * num    # ì›ì†Œ ìˆ˜ê°€ numì¸ ë°°ì—´ì„ ìƒì„±
+    print('ºñÀç±ÍÀûÀÎ Äü Á¤·Ä')
+    num = int(input('¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
+    x = [None] * num    # ¿ø¼Ò ¼ö°¡ numÀÎ ¹è¿­À» »ı¼º
 
     for i in range(num):
         x[i] = int(input(f'x[{i}]: '))
 
-    quick_sort(x)       # ë°°ì—´ xë¥¼ í€µ ì •ë ¬
+    quick_sort(x)       # ¹è¿­ x¸¦ Äü Á¤·Ä
 
-    print('ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í–ˆìŠµë‹ˆë‹¤.')
+    print('¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇß½À´Ï´Ù.')
     for i in range(num):
         print(f'x[{i}] = {x[i]}')

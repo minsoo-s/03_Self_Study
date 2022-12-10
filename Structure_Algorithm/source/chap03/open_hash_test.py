@@ -1,12 +1,12 @@
-# [Do it! ì‹¤ìŠµ 3-8] ì˜¤í”ˆ ì£¼ì†Œë²•ì„ êµ¬í˜„í•˜ëŠ” í•´ì‹œ í´ë˜ìŠ¤ OpenHash ì‚¬ìš©
+# [Do it! ½Ç½À 3-8] ¿ÀÇÂ ÁÖ¼Ò¹ıÀ» ±¸ÇöÇÏ´Â ÇØ½Ã Å¬·¡½º OpenHash »ç¿ë
 
 from enum import Enum
 from open_hash import OpenHash
 
-Menu = Enum('Menu', ['ì¶”ê°€', 'ì‚­ì œ', 'ê²€ìƒ‰', 'ë¤í”„', 'ì¢…ë£Œ'])
+Menu = Enum('Menu', ['Ãß°¡', '»èÁ¦', '°Ë»ö', '´ıÇÁ', 'Á¾·á'])
 
 def select_menu() -> Menu:
-    """ë©”ë‰´ ì„ íƒ"""
+    """¸Ş´º ¼±ÅÃ"""
     s = [f'({m.value}){m.name}' for m in Menu]
     while True:
         print(*s, sep = '  ', end='')
@@ -14,32 +14,32 @@ def select_menu() -> Menu:
         if 1 <=  n <= len(Menu):
             return Menu(n)
 
-hash = OpenHash(13)  # í¬ê¸°ê°€ 13ì¸ í•´ì‹œ í…Œì´ë¸” ìƒì„±
+hash = OpenHash(13)  # Å©±â°¡ 13ÀÎ ÇØ½Ã Å×ÀÌºí »ı¼º
 
 while True:
-    menu = select_menu()  # ë©”ë‰´ ì„ íƒ
+    menu = select_menu()  # ¸Ş´º ¼±ÅÃ
 
-    if menu == Menu.ì¶”ê°€:  # ì¶”ê°€
-        key = int(input('ì¶”ê°€í•  í‚¤ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
-        val = input('ì¶”ê°€í•  ê°’ì„ ì…ë ¥í•˜ì„¸ìš”.: ')
+    if menu == Menu.Ãß°¡:  # Ãß°¡
+        key = int(input('Ãß°¡ÇÒ Å°¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
+        val = input('Ãß°¡ÇÒ °ªÀ» ÀÔ·ÂÇÏ¼¼¿ä.: ')
         if not hash.add(key, val):
-            print('ì¶”ê°€ë¥¼ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤!')
+            print('Ãß°¡¸¦ ½ÇÆĞÇß½À´Ï´Ù!')
 
-    elif menu == Menu.ì‚­ì œ:  # ì‚­ì œ
-        key = int(input('ì‚­ì œí•  í‚¤ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
+    elif menu == Menu.»èÁ¦:  # »èÁ¦
+        key = int(input('»èÁ¦ÇÒ Å°¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
         if not hash.remove(key):
-            print('ì‚­ì œë¥¼ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤!')
+            print('»èÁ¦¸¦ ½ÇÆĞÇß½À´Ï´Ù!')
 
-    elif menu == Menu.ê²€ìƒ‰:  # ê²€ìƒ‰
-        key = int(input('ê²€ìƒ‰í•  í‚¤ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
+    elif menu == Menu.°Ë»ö:  # °Ë»ö
+        key = int(input('°Ë»öÇÒ Å°¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
         t = hash.search(key)
         if t is not None:
-            print(f'ê²€ìƒ‰í•œ í‚¤ë¥¼ ê°–ëŠ” ê°’ì€ {t}ì…ë‹ˆë‹¤.')
+            print(f'°Ë»öÇÑ Å°¸¦ °®´Â °ªÀº {t}ÀÔ´Ï´Ù.')
         else:
-            print('ê²€ìƒ‰í•  ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.')
+            print('°Ë»öÇÒ µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.')
 
-    elif menu == Menu.ë¤í”„:  # ë¤í”„
+    elif menu == Menu.´ıÇÁ:  # ´ıÇÁ
         hash.dump()
 
-    else:  # ì¢…ë£Œ
+    else:  # Á¾·á
         break

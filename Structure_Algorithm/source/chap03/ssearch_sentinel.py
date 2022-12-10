@@ -1,32 +1,32 @@
-# [Do it! ì‹¤ìŠµ 3-3] ì„ í˜• ê²€ìƒ‰ ì•Œê³ ë¦¬ì¦˜(ì‹¤ìŠµ 3-1)ì„ ë³´ì´ˆë²•ìœ¼ë¡œ ìˆ˜ì •
+# [Do it! ½Ç½À 3-3] ¼±Çü °Ë»ö ¾Ë°í¸®Áò(½Ç½À 3-1)À» º¸ÃÊ¹ıÀ¸·Î ¼öÁ¤
 
 from typing import Any, Sequence
 import copy
 
 def seq_search(seq: Sequence, key: Any) -> int:
-    """ì‹œí€€ìŠ¤ seqì—ì„œ keyì™€ ì¼ì¹˜í•˜ëŠ” ì›ì†Œë¥¼ ì„ í˜• ê²€ìƒ‰(ë³´ì´ˆë²•)"""
-    a = copy.deepcopy(seq)  # seqë¥¼ ë³µì‚¬
-    a.append(key)           # ë³´ì´ˆ keyë¥¼ ì¶”ê°€
+    """½ÃÄö½º seq¿¡¼­ key¿Í ÀÏÄ¡ÇÏ´Â ¿ø¼Ò¸¦ ¼±Çü °Ë»ö(º¸ÃÊ¹ı)"""
+    a = copy.deepcopy(seq)  # seq¸¦ º¹»ç
+    a.append(key)           # º¸ÃÊ key¸¦ Ãß°¡
  
     i = 0
     while True:
         if a[i] == key: 
-            break  # ê²€ìƒ‰ì— ì„±ê³µí•˜ë©´ while ë¬¸ì„ ì¢…ë£Œ
+            break  # °Ë»ö¿¡ ¼º°øÇÏ¸é while ¹®À» Á¾·á
         i += 1
     return -1 if i == len(seq) else i
 
 if __name__ == '__main__':
-    num = int(input('ì›ì†Œ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))  # num ê°’ì„ ì…ë ¥
-    x = [None] * num                           # ì›ì†Œ ìˆ˜ê°€ numì¸ ë°°ì—´ì„ ìƒì„±
+    num = int(input('¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))  # num °ªÀ» ÀÔ·Â
+    x = [None] * num                           # ¿ø¼Ò ¼ö°¡ numÀÎ ¹è¿­À» »ı¼º
 
     for i in range(num):
         x[i] = int(input(f'x[{i}]: '))
 
-    ky = int(input('ê²€ìƒ‰í•  ê°’ì„ ì…ë ¥í•˜ì„¸ìš”.: '))  # ê²€ìƒ‰í•  í‚¤ kyë¥¼ ì…ë ¥ë°›ê¸°
+    ky = int(input('°Ë»öÇÒ °ªÀ» ÀÔ·ÂÇÏ¼¼¿ä.: '))  # °Ë»öÇÒ Å° ky¸¦ ÀÔ·Â¹Ş±â
 
-    idx = seq_search(x, ky)                     # kyê°’ê³¼ ê°™ì€ ì›ì†Œë¥¼ xì—ì„œ ê²€ìƒ‰
+    idx = seq_search(x, ky)                     # ky°ª°ú °°Àº ¿ø¼Ò¸¦ x¿¡¼­ °Ë»ö
 
     if idx == -1:
-         print('ê²€ìƒ‰ê°’ì„ ê°–ëŠ” ì›ì†Œê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.')
+         print('°Ë»ö°ªÀ» °®´Â ¿ø¼Ò°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.')
     else:
-        print(f'ê²€ìƒ‰ê°’ì€ x[{idx}]ì— ìˆìŠµë‹ˆë‹¤.')
+        print(f'°Ë»ö°ªÀº x[{idx}]¿¡ ÀÖ½À´Ï´Ù.')

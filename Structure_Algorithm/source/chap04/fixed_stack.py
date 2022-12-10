@@ -1,84 +1,84 @@
-# ê³ ì • ê¸¸ì´ ìŠ¤íƒ í´ëž˜ìŠ¤ FixedStack êµ¬í˜„í•˜ê¸°
-# Do it! ì‹¤ìŠµ 4-1 [A]
+# °íÁ¤ ±æÀÌ ½ºÅÃ Å¬·¡½º FixedStack ±¸ÇöÇÏ±â
+# Do it! ½Ç½À 4-1 [A]
 from typing import Any
 
 class FixedStack:
-    """ê³ ì • ê¸¸ì´ ìŠ¤íƒ í´ëž˜ìŠ¤"""
+    """°íÁ¤ ±æÀÌ ½ºÅÃ Å¬·¡½º"""
 
     class Empty(Exception):
-        """ë¹„ì–´ ìžˆëŠ” FixedStackì— pop ë˜ëŠ” peekë¥¼ í˜¸ì¶œí•  ë•Œ ë‚´ë³´ë‚´ëŠ” ì˜ˆì™¸ ì²˜ë¦¬"""
+        """ºñ¾î ÀÖ´Â FixedStack¿¡ pop ¶Ç´Â peek¸¦ È£ÃâÇÒ ¶§ ³»º¸³»´Â ¿¹¿Ü Ã³¸®"""
         pass
 
     class Full(Exception):
-        """ê°€ë“ ì°¬ FixedStackì— pushë¥¼ í˜¸ì¶œí•  ë•Œ ë‚´ë³´ë‚´ëŠ” ì˜ˆì™¸ ì²˜ë¦¬"""
+        """°¡µæ Âù FixedStack¿¡ push¸¦ È£ÃâÇÒ ¶§ ³»º¸³»´Â ¿¹¿Ü Ã³¸®"""
         pass
 
     def __init__(self, capacity: int = 256) -> None:
-        """ì´ˆê¸°í™”"""
-        self.stk = [None] * capacity  # ìŠ¤íƒ ë³¸ì²´
-        self.capacity = capacity      # ìŠ¤íƒì˜ í¬ê¸°
-        self.ptr = 0                  # ìŠ¤íƒ í¬ì¸í„°
+        """ÃÊ±âÈ­"""
+        self.stk = [None] * capacity  # ½ºÅÃ º»Ã¼
+        self.capacity = capacity      # ½ºÅÃÀÇ Å©±â
+        self.ptr = 0                  # ½ºÅÃ Æ÷ÀÎÅÍ
 
     def __len__(self) -> int:
-        """ìŠ¤íƒì— ìŒ“ì—¬ìžˆëŠ” ë°ì´í„° ê°œìˆ˜ë¥¼ ë°˜í™˜"""
+        """½ºÅÃ¿¡ ½×¿©ÀÖ´Â µ¥ÀÌÅÍ °³¼ö¸¦ ¹ÝÈ¯"""
         return self.ptr
 
     def is_empty(self) -> bool:
-        """ìŠ¤íƒì´ ë¹„ì–´ ìžˆëŠ”ê°€?"""
+        """½ºÅÃÀÌ ºñ¾î ÀÖ´Â°¡?"""
         return self.ptr <= 0
 
     def is_full(self) -> bool:
-        """ìŠ¤íƒì€ ê°€ë“ ì°¼ëŠ”ê°€?"""
+        """½ºÅÃÀº °¡µæ Ã¡´Â°¡?"""
         return self.ptr >= self.capacity
 
-# Do it! ì‹¤ìŠµ 4-1 [B]
+# Do it! ½Ç½À 4-1 [B]
     def push(self, value: Any) -> None:
-        """ìŠ¤íƒì— valueë¥¼ í‘¸ì‹œ"""
-        if self.is_full():              # ìŠ¤íƒì´ ê°€ë“ ì°¸
+        """½ºÅÃ¿¡ value¸¦ Çª½Ã"""
+        if self.is_full():              # ½ºÅÃÀÌ °¡µæ Âü
             raise FixedStack.Full
         self.stk[self.ptr] = value
         self.ptr += 1
 
     def pop(self) -> Any:
-        """ìŠ¤íƒì—ì„œ ë°ì´í„°ë¥¼ íŒ(ê¼­ëŒ€ê¸° ë°ì´í„°ë¥¼ êº¼ëƒ„)"""
-        if self.is_empty():             # ìŠ¤íƒì´ ë¹„ì–´ ìžˆìŒ
+        """½ºÅÃ¿¡¼­ µ¥ÀÌÅÍ¸¦ ÆË(²À´ë±â µ¥ÀÌÅÍ¸¦ ²¨³¿)"""
+        if self.is_empty():             # ½ºÅÃÀÌ ºñ¾î ÀÖÀ½
              raise FixedStack.Empty
         self.ptr -= 1
         return self.stk[self.ptr]
 
     def peek(self) -> Any:
-        """ìŠ¤íƒì—ì„œ ë°ì´í„°ë¥¼ í”¼í¬(ê¼­ëŒ€ê¸° ë°ì´í„°ë¥¼ ë“¤ì—¬ë‹¤ ë´„)"""
-        if self.is_empty():             # ìŠ¤íƒì´ ë¹„ì–´ ìžˆìŒ
+        """½ºÅÃ¿¡¼­ µ¥ÀÌÅÍ¸¦ ÇÇÅ©(²À´ë±â µ¥ÀÌÅÍ¸¦ µé¿©´Ù º½)"""
+        if self.is_empty():             # ½ºÅÃÀÌ ºñ¾î ÀÖÀ½
             raise FixedStack.Empty
         return self.stk[self.ptr - 1]
 
     def clear(self) -> None:
-        """ìŠ¤íƒì„ ë¹„ì›€(ëª¨ë“  ë°ì´í„°ë¥¼ ì‚­ì œ)"""
+        """½ºÅÃÀ» ºñ¿ò(¸ðµç µ¥ÀÌÅÍ¸¦ »èÁ¦)"""
         self.ptr = 0
 
-# Do it! ì‹¤ìŠµ 4-1 [C]
+# Do it! ½Ç½À 4-1 [C]
     def find(self, value: Any) -> Any:
-        """ìŠ¤íƒì—ì„œ valueë¥¼ ì°¾ì•„ ì²¨ìž(ì—†ìœ¼ë©´ -1)ë¥¼ ë°˜í™˜"""
-        for i in range(self.ptr - 1, -1, -1):  # ê¼­ëŒ€ê¸° ìª½ë¶€í„° ì„ í˜• ê²€ìƒ‰
+        """½ºÅÃ¿¡¼­ value¸¦ Ã£¾Æ Ã·ÀÚ(¾øÀ¸¸é -1)¸¦ ¹ÝÈ¯"""
+        for i in range(self.ptr - 1, -1, -1):  # ²À´ë±â ÂÊºÎÅÍ ¼±Çü °Ë»ö
             if self.stk[i] == value:
-                return i  # ê²€ìƒ‰ ì„±ê³µ
-        return -1         # ê²€ìƒ‰ ì‹¤íŒ¨
+                return i  # °Ë»ö ¼º°ø
+        return -1         # °Ë»ö ½ÇÆÐ
 
     def count(self, value: Any) -> bool:
-        """ìŠ¤íƒì— í¬í•¨ë˜ì–´ìžˆëŠ” valueì˜ ê°œìˆ˜ë¥¼ ë°˜í™˜"""
+        """½ºÅÃ¿¡ Æ÷ÇÔµÇ¾îÀÖ´Â valueÀÇ °³¼ö¸¦ ¹ÝÈ¯"""
         c = 0
-        for i in range(self.ptr):  # ë°”ë‹¥ ìª½ë¶€í„° ì„ í˜• ê²€ìƒ‰
+        for i in range(self.ptr):  # ¹Ù´Ú ÂÊºÎÅÍ ¼±Çü °Ë»ö
             if self.stk[i] == value:
-                c += 1             # ë“¤ì–´ ìžˆìŒ
+                c += 1             # µé¾î ÀÖÀ½
         return c
 
     def __contains__(self, value: Any) -> bool:
-        """ìŠ¤íƒì— valueê°€ ìžˆëŠ”ê°€?"""
+        """½ºÅÃ¿¡ value°¡ ÀÖ´Â°¡?"""
         return self.count(value)
 
     def dump(self) -> None:
-        """ë¤í”„(ìŠ¤íƒ ì•ˆì˜ ëª¨ë“  ë°ì´í„°ë¥¼ ë°”ë‹¥ë¶€í„° ê¼­ëŒ€ê¸° ìˆœìœ¼ë¡œ ì¶œë ¥)"""
-        if self.is_empty():  # ìŠ¤íƒì´ ë¹„ì–´ ìžˆìŒ
-            print('ìŠ¤íƒì´ ë¹„ì–´ ìžˆìŠµë‹ˆë‹¤.')
+        """´ýÇÁ(½ºÅÃ ¾ÈÀÇ ¸ðµç µ¥ÀÌÅÍ¸¦ ¹Ù´ÚºÎÅÍ ²À´ë±â ¼øÀ¸·Î Ãâ·Â)"""
+        if self.is_empty():  # ½ºÅÃÀÌ ºñ¾î ÀÖÀ½
+            print('½ºÅÃÀÌ ºñ¾î ÀÖ½À´Ï´Ù.')
         else:
             print(self.stk[:self.ptr])

@@ -1,4 +1,4 @@
-# [Do it! ì‹¤ìŠµ 3C-2] seq_search() í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•˜ì—¬ íŠ¹ì • ì¸ë±ìŠ¤ ê²€ìƒ‰í•˜ê¸°
+# [Do it! ½Ç½À 3C-2] seq_search() ÇÔ¼ö¸¦ »ç¿ëÇÏ¿© Æ¯Á¤ ÀÎµ¦½º °Ë»öÇÏ±â
 
 from ssearch_while import seq_search
 
@@ -6,6 +6,6 @@ t = (4, 7, 5.6, 2, 3.14, 1)
 s = 'string'
 a = ['DTS', 'AAC', 'FLAC']
 
-print(f'{t}ì—ì„œ 5.6ì˜ ì¸ë±ìŠ¤ëŠ” {seq_search(t, 5.6)}ì…ë‹ˆë‹¤.')
-print(f'{s}ì—ì„œ "n"ì˜ ì¸ë±ìŠ¤ëŠ” {seq_search(s, "n")}ì…ë‹ˆë‹¤.')
-print(f'{a}ì—ì„œ "DTS"ì˜ ì¸ë±ìŠ¤ëŠ” {seq_search(a, "DTS")}ì…ë‹ˆë‹¤.')
+print(f'{t}¿¡¼­ 5.6ÀÇ ÀÎµ¦½º´Â {seq_search(t, 5.6)}ÀÔ´Ï´Ù.')
+print(f'{s}¿¡¼­ "n"ÀÇ ÀÎµ¦½º´Â {seq_search(s, "n")}ÀÔ´Ï´Ù.')
+print(f'{a}¿¡¼­ "DTS"ÀÇ ÀÎµ¦½º´Â {seq_search(a, "DTS")}ÀÔ´Ï´Ù.')

@@ -1,23 +1,23 @@
-# [Do it! ì‹¤ìŠµ 6C-2] ì´ì§„ ì‚½ì… ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ì˜ êµ¬í˜„(bisect.insort ì‚¬ìš©)
+# [Do it! ½Ç½À 6C-2] ÀÌÁø »ğÀÔ Á¤·Ä ¾Ë°í¸®ÁòÀÇ ±¸Çö(bisect.insort »ç¿ë)
 
 from typing import MutableSequence
 import bisect
 
 def binary_insertion_sort(a: MutableSequence) -> None:
-    """ì´ì§„ ì‚½ì… ì •ë ¬(bisect.insortì„ ì‚¬ìš©)"""
+    """ÀÌÁø »ğÀÔ Á¤·Ä(bisect.insortÀ» »ç¿ë)"""
     for i in range(1, len(a)):
         bisect.insort(a, a.pop(i), 0, i)
 
 if __name__ == '__main__':
-    print('ì´ì§„ ì‚½ì… ì •ë ¬ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤.')
-    num = int(input('ì›ì†Œ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
-    x = [None] * num            # ì›ì†Œ ìˆ˜ê°€ numì¸ ë°°ì—´ì„ ìƒì„±
+    print('ÀÌÁø »ğÀÔ Á¤·ÄÀ» ¼öÇàÇÕ´Ï´Ù.')
+    num = int(input('¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
+    x = [None] * num            # ¿ø¼Ò ¼ö°¡ numÀÎ ¹è¿­À» »ı¼º
 
     for i in range(num):
         x[i] = int(input(f'x[{i}]: '))
 
-    binary_insertion_sort(x)    # ë°°ì—´ xë¥¼ ì´ì§„ ì‚½ì… ì •ë ¬
+    binary_insertion_sort(x)    # ¹è¿­ x¸¦ ÀÌÁø »ğÀÔ Á¤·Ä
 
-    print('ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í–ˆìŠµë‹ˆë‹¤.')
+    print('¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇß½À´Ï´Ù.')
     for i in range(num):
         print(f'x[{i}] = {x[i]}')

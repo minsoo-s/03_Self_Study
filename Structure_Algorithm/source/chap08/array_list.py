@@ -1,4 +1,4 @@
-# [Do it! ì‹¤ìŠµ 8-3] ì»¤ì„œë¡œ ì„ í˜• ë¦¬ìŠ¤íŠ¸ ë§Œë“¤ê¸°
+# [Do it! ½Ç½À 8-3] Ä¿¼­·Î ¼±Çü ¸®½ºÆ® ¸¸µé±â
 
 from __future__ import annotations
 from typing import Any, Type
@@ -6,132 +6,132 @@ from typing import Any, Type
 Null = -1
 
 class Node:
-    """ì„ í˜• ë¦¬ìŠ¤íŠ¸ìš© ë…¸ë“œ í´ë˜ìŠ¤(ë°°ì—´ ì»¤ì„œ ë²„ì „)"""
+    """¼±Çü ¸®½ºÆ®¿ë ³ëµå Å¬·¡½º(¹è¿­ Ä¿¼­ ¹öÀü)"""
 
     def __init__(self, data = Null, next = Null, dnext = Null):
-        """ì´ˆê¸°í™”"""
-        self.data  = data   # ë°ì´í„°
-        self.next  = next   # ë¦¬ìŠ¤íŠ¸ì˜ ë’¤ìª½ í¬ì¸í„°
-        self.dnext = dnext  # í”„ë¦¬ ë¦¬ìŠ¤íŠ¸ì˜ ë’¤ìª½ í¬ì¸í„°
+        """ÃÊ±âÈ­"""
+        self.data  = data   # µ¥ÀÌÅÍ
+        self.next  = next   # ¸®½ºÆ®ÀÇ µÚÂÊ Æ÷ÀÎÅÍ
+        self.dnext = dnext  # ÇÁ¸® ¸®½ºÆ®ÀÇ µÚÂÊ Æ÷ÀÎÅÍ
 
 class ArrayLinkedList:
-    """ì„ í˜• ë¦¬ìŠ¤íŠ¸ í´ë˜ìŠ¤(ë°°ì—´ ì»¤ì„œ ë²„ì „)"""
+    """¼±Çü ¸®½ºÆ® Å¬·¡½º(¹è¿­ Ä¿¼­ ¹öÀü)"""
 
     def __init__(self, capacity: int):
-        """ì´ˆê¸°í™”"""
-        self.head = Null                   # ë¨¸ë¦¬ ë…¸ë“œ
-        self.current = Null                # ì£¼ëª© ë…¸ë“œ
-        self.max = Null                    # ì‚¬ìš© ì¤‘ì¸ ë§¨ë ë ˆì½”ë“œ
-        self.deleted = Null                # í”„ë¦¬ ë¦¬ìŠ¤íŠ¸ì˜ ë¨¸ë¦¬ ë…¸ë“œ
-        self.capacity = capacity           # ë¦¬ìŠ¤íŠ¸ì˜ í¬ê¸°
-        self.n = [Node()] * self.capacity  # ë¦¬ìŠ¤íŠ¸ ë³¸ì²´
+        """ÃÊ±âÈ­"""
+        self.head = Null                   # ¸Ó¸® ³ëµå
+        self.current = Null                # ÁÖ¸ñ ³ëµå
+        self.max = Null                    # »ç¿ë ÁßÀÎ ¸Ç³¡ ·¹ÄÚµå
+        self.deleted = Null                # ÇÁ¸® ¸®½ºÆ®ÀÇ ¸Ó¸® ³ëµå
+        self.capacity = capacity           # ¸®½ºÆ®ÀÇ Å©±â
+        self.n = [Node()] * self.capacity  # ¸®½ºÆ® º»Ã¼
         self.no = 0
 
 
     def __len__(self) -> int:
-        """ì„ í˜• ë¦¬ìŠ¤íŠ¸ì˜ ë…¸ë“œ ìˆ˜ë¥¼ ë°˜í™˜"""
+        """¼±Çü ¸®½ºÆ®ÀÇ ³ëµå ¼ö¸¦ ¹İÈ¯"""
         return self.no
 
     def get_insert_index(self):
-        """ë‹¤ìŒì— ì‚½ì…í•  ë ˆì½”ë“œì˜ ì²¨ìë¥¼ êµ¬í•©ë‹ˆë‹¤"""
-        if self.deleted == Null:  # ì‚­ì œ ë ˆì½”ë“œëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤
+        """´ÙÀ½¿¡ »ğÀÔÇÒ ·¹ÄÚµåÀÇ Ã·ÀÚ¸¦ ±¸ÇÕ´Ï´Ù"""
+        if self.deleted == Null:  # »èÁ¦ ·¹ÄÚµå´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù
             if self.max+1 < self.capacity:
                 self.max += 1
-                return self.max   # ìƒˆ ë ˆì½”ë“œë¥¼ ì‚¬ìš©
+                return self.max   # »õ ·¹ÄÚµå¸¦ »ç¿ë
             else:
-                return Null       # í¬ê¸° ì´ˆê³¼
+                return Null       # Å©±â ÃÊ°ú
         else:
-            rec = self.deleted                # í”„ë¦¬ ë¦¬ìŠ¤íŠ¸ì—ì„œ
-            self.deleted = self.n[rec].dnext  # ë§¨ ì• recë¥¼ êº¼ë‚´ê¸°
+            rec = self.deleted                # ÇÁ¸® ¸®½ºÆ®¿¡¼­
+            self.deleted = self.n[rec].dnext  # ¸Ç ¾Õ rec¸¦ ²¨³»±â
             return rec
 
     def delete_index(self, idx: int) -> None:
-        """ë ˆì½”ë“œ idxë¥¼ í”„ë¦¬ ë¦¬ìŠ¤íŠ¸ì— ë“±ë¡"""
-        if self.deleted == Null:      # ì‚­ì œ ë ˆì½”ë“œëŠ” ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤
-            self.deleted = idx        # idxë¥¼ í”„ë¦¬ ë¦¬ìŠ¤íŠ¸ì˜
-            self.n[idx].dnext = Null  # ë§¨ ì•ì— ë“±ë¡
+        """·¹ÄÚµå idx¸¦ ÇÁ¸® ¸®½ºÆ®¿¡ µî·Ï"""
+        if self.deleted == Null:      # »èÁ¦ ·¹ÄÚµå´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù
+            self.deleted = idx        # idx¸¦ ÇÁ¸® ¸®½ºÆ®ÀÇ
+            self.n[idx].dnext = Null  # ¸Ç ¾Õ¿¡ µî·Ï
         else:
-            rec = self.deleted        # idxë¥¼ í”„ë¦¬ ë¦¬ìŠ¤íŠ¸ì˜
-            self.deleted = idx        # ë§¨ ì•ì— ì‚½ì…
+            rec = self.deleted        # idx¸¦ ÇÁ¸® ¸®½ºÆ®ÀÇ
+            self.deleted = idx        # ¸Ç ¾Õ¿¡ »ğÀÔ
             self.n[idx].dnext = rec
 
     def search(self, data: Any) -> int:
-        """dataì™€ ê°’ì´ ê°™ì€ ë…¸ë“œë¥¼ ê²€ìƒ‰"""
+        """data¿Í °ªÀÌ °°Àº ³ëµå¸¦ °Ë»ö"""
         cnt = 0
-        ptr = self.head             # í˜„ì¬ ìŠ¤ìº” ì¤‘ì¸ ë…¸ë“œ
+        ptr = self.head             # ÇöÀç ½ºÄµ ÁßÀÎ ³ëµå
         while ptr != Null:
             if self.n[ptr].data == data:
                 self.current = ptr
-                return cnt          # ê²€ìƒ‰ ì„±ê³µ
+                return cnt          # °Ë»ö ¼º°ø
             cnt += 1
-            ptr = self.n[ptr].next  # ë’¤ìª½ ë…¸ë“œì— ì£¼ëª©
-        return Null                 # ê²€ìƒ‰ ì‹¤íŒ¨
+            ptr = self.n[ptr].next  # µÚÂÊ ³ëµå¿¡ ÁÖ¸ñ
+        return Null                 # °Ë»ö ½ÇÆĞ
 
     def __contains__(self, data: Any) -> bool:
-        """ì„ í˜• ë¦¬ìŠ¤íŠ¸ì— dataê°€ í¬í•¨ë˜ì–´ ìˆëŠ”ì§€ í™•ì¸"""
+        """¼±Çü ¸®½ºÆ®¿¡ data°¡ Æ÷ÇÔµÇ¾î ÀÖ´ÂÁö È®ÀÎ"""
         return self.search(data) >= 0
 
     def add_first(self, data: Any):
-        """ë¨¸ë¦¬ ë…¸ë“œì— ì‚½ì…"""
-        ptr = self.head                     # ì‚½ì…í•˜ê¸° ì „ì˜ ë¨¸ë¦¬ ë…¸ë“œ
+        """¸Ó¸® ³ëµå¿¡ »ğÀÔ"""
+        ptr = self.head                     # »ğÀÔÇÏ±â ÀüÀÇ ¸Ó¸® ³ëµå
         rec = self.get_insert_index()
         if rec != Null:
-            self.head = self.current = rec  # recë²ˆì§¸ ë ˆì½”ë“œì— ì‚½ì…
+            self.head = self.current = rec  # rec¹øÂ° ·¹ÄÚµå¿¡ »ğÀÔ
             self.n[self.head] = Node(data, ptr)
             self.no += 1
 
     def add_last(self, data: Any) -> None:
-        """ê¼¬ë¦¬ ë…¸ë“œì— ì‚½ì…"""
-        if self.head == Null:     # ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ ìˆìœ¼ë©´
-            self.add_first(data)  # ë§¨ ì•ì— ë…¸ë“œ ì‚½ì…
+        """²¿¸® ³ëµå¿¡ »ğÀÔ"""
+        if self.head == Null:     # ¸®½ºÆ®°¡ ºñ¾î ÀÖÀ¸¸é
+            self.add_first(data)  # ¸Ç ¾Õ¿¡ ³ëµå »ğÀÔ
         else:
             ptr = self.head
             while self.n[ptr].next != Null:
                 ptr = self.n[ptr].next
             rec = self.get_insert_index()
 
-            if rec != Null:       # recë²ˆì§¸ ë ˆì½”ë“œì— ì‚½ì…
+            if rec != Null:       # rec¹øÂ° ·¹ÄÚµå¿¡ »ğÀÔ
                 self.n[ptr].next = self.current = rec
                 self.n[rec] = Node(data)
                 self.no += 1
 
     def remove_first(self) -> None:
-        """ë¨¸ë¦¬ ë…¸ë“œë¥¼ ì‚­ì œ"""
-        if self.head != Null:  # ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ ìˆìœ¼ë©´
+        """¸Ó¸® ³ëµå¸¦ »èÁ¦"""
+        if self.head != Null:  # ¸®½ºÆ®°¡ ºñ¾î ÀÖÀ¸¸é
             ptr = self.n[self.head].next
             self.delete_index(self.head)
             self.head = self.current = ptr
             self.no -= 1
 
     def remove_last(self) -> None:
-        """ê¼¬ë¦¬ ë…¸ë“œë¥¼ ì‚­ì œ"""
+        """²¿¸® ³ëµå¸¦ »èÁ¦"""
         if self.head != Null:
-            if self.n[self.head].next == Null:  # ë…¸ë“œê°€ 1ê°œ ë¿ì´ë©´
-                self.remove_first()             # ë¨¸ë¦¬ ë…¸ë“œë¥¼ ì‚­ì œ
+            if self.n[self.head].next == Null:  # ³ëµå°¡ 1°³ »ÓÀÌ¸é
+                self.remove_first()             # ¸Ó¸® ³ëµå¸¦ »èÁ¦
             else:
-                ptr = self.head                 # ìŠ¤ìº” ì¤‘ì¸ ë…¸ë“œ
-                pre = self.head                 # ìŠ¤ìº” ì¤‘ì¸ ë…¸ë“œì˜ ì•ìª½ ë…¸ë“œ
+                ptr = self.head                 # ½ºÄµ ÁßÀÎ ³ëµå
+                pre = self.head                 # ½ºÄµ ÁßÀÎ ³ëµåÀÇ ¾ÕÂÊ ³ëµå
 
                 while self.n[ptr].next != Null:
                     pre = ptr
                     ptr = self.n[ptr].next
-                self.n[pre].next = Null  # preëŠ” ì‚­ì œí•œ ë’¤ì˜ ê¼¬ë¦¬ ë…¸ë“œ
+                self.n[pre].next = Null  # pre´Â »èÁ¦ÇÑ µÚÀÇ ²¿¸® ³ëµå
                 self.delete_index(ptr)
                 self.current = pre
                 self.no -= 1
 
     def remove(self, p: int) -> None:
-        """ë ˆì½”ë“œ pë¥¼ ì‚­ì œ"""
+        """·¹ÄÚµå p¸¦ »èÁ¦"""
         if self.head != Null:
-            if p == self.head:       # pê°€ ë¨¸ë¦¬ ë…¸ë“œë©´
-                self.remove_first()  # ë¨¸ë¦¬ ë…¸ë“œë¥¼ ì‚­ì œ
+            if p == self.head:       # p°¡ ¸Ó¸® ³ëµå¸é
+                self.remove_first()  # ¸Ó¸® ³ëµå¸¦ »èÁ¦
             else:
                 ptr = self.head
 
                 while self.n[ptr].next != p:
                     ptr = self.n[ptr].next
                     if ptr == Null:
-                        return  # pëŠ” ë¦¬ìŠ¤íŠ¸ì— ì¡´ì¬í•˜ì§€ ì•ŠìŒ
+                        return  # p´Â ¸®½ºÆ®¿¡ Á¸ÀçÇÏÁö ¾ÊÀ½
                 #self.n[ptr].next = Null
                 self.delete_index(p)
                 self.n[ptr].next = self.n[p].next
@@ -139,32 +139,32 @@ class ArrayLinkedList:
                 self.no -= 1
 
     def remove_current_node(self) -> None:
-        """ì£¼ëª© ë…¸ë“œë¥¼ ì‚­ì œ"""
+        """ÁÖ¸ñ ³ëµå¸¦ »èÁ¦"""
         self.remove(self.current)
 
     def clear(self) -> None:
-        """ëª¨ë“  ë…¸ë“œë¥¼ ì‚­ì œ"""
-        while self.head != Null:  # ë¦¬ìŠ¤íŠ¸ ì „ì²´ê°€ ë¹Œ ë•Œê¹Œì§€
-            self.remove_first()   # ë¨¸ë¦¬ ë…¸ë“œë¥¼ ì‚­ì œ
+        """¸ğµç ³ëµå¸¦ »èÁ¦"""
+        while self.head != Null:  # ¸®½ºÆ® ÀüÃ¼°¡ ºô ¶§±îÁö
+            self.remove_first()   # ¸Ó¸® ³ëµå¸¦ »èÁ¦
         self.current = Null
 
     def next(self) -> bool:
-        """ì£¼ëª© ë…¸ë“œë¥¼ í•œ ì¹¸ ë’¤ë¡œ ì§„í–‰"""
+        """ÁÖ¸ñ ³ëµå¸¦ ÇÑ Ä­ µÚ·Î ÁøÇà"""
         if self.current == Null or self.n[self.current].next == Null:
-            return False  # ì§„í–‰í•  ìˆ˜ ì—†ìŒ
+            return False  # ÁøÇàÇÒ ¼ö ¾øÀ½
         self.current = self.n[self.current].next
         return True
 
 
     def print_current_node(self) -> None:
-        """ì£¼ëª© ë…¸ë“œë¥¼ ì¶œë ¥"""
+        """ÁÖ¸ñ ³ëµå¸¦ Ãâ·Â"""
         if self.current == Null:
-            print('ì£¼ëª© ë…¸ë“œê°€ ì—†ìŠµë‹ˆë‹¤.')
+            print('ÁÖ¸ñ ³ëµå°¡ ¾ø½À´Ï´Ù.')
         else:
             print(self.n[self.current].data)
 
     def print(self) -> None:
-        """ëª¨ë“  ë…¸ë“œë¥¼ ì¶œë ¥"""
+        """¸ğµç ³ëµå¸¦ Ãâ·Â"""
         ptr = self.head
 
         while ptr != Null:
@@ -172,16 +172,16 @@ class ArrayLinkedList:
             ptr = self.n[ptr].next
 
     def dump(self) -> None:
-        """ë°°ì—´ì„ ë¤í”„"""
+        """¹è¿­À» ´ıÇÁ"""
         for i in self.n:
             print(f'[{i}]  {i.data} {i.next} {i.dnext}')
 
     def __iter__(self) -> ArrayLinkedListIterator:
-        """ì´í„°ë ˆì´í„°ë¥¼ ë°˜í™˜"""
+        """ÀÌÅÍ·¹ÀÌÅÍ¸¦ ¹İÈ¯"""
         return ArrayLinkedListIterator(self.n, self.head)
 
 class ArrayLinkedListIterator:
-    """í´ë˜ìŠ¤ ArrayLinkedListì˜ ì´í„°ë ˆì´í„°ìš© í´ë˜ìŠ¤"""
+    """Å¬·¡½º ArrayLinkedListÀÇ ÀÌÅÍ·¹ÀÌÅÍ¿ë Å¬·¡½º"""
 
     def __init__(self, n: int, head: int):
         self.n = n

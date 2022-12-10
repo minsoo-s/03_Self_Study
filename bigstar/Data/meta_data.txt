@@ -1,8 +1,8 @@
 data_tomato
-- ì¶”ê°€ ë°ì´í„° ì •ë¦¬ë³¸
+- Ãß°¡ µ¥ÀÌÅÍ Á¤¸®º»
 
 
-TCL: í•´ë‹¹ ë„ì‹œ ê¸°ì˜¨ * (í•´ë‹¹ ë„ì‹œ ë„ì‹œê°€ìŠ¤ ê°€êµ¬ ìˆ˜ / ì „êµ­ ë„ì‹œê°€ìŠ¤ ê°€êµ¬ ìˆ˜
-TEMP_EF: ê¸°ì˜¨íš¨ê³¼
-POWER: ë°œì „ëŸ‰
-ELEC: ì „ë ¥ ì†Œëª¨ëŸ‰
+TCL: ÇØ´ç µµ½Ã ±â¿Â * (ÇØ´ç µµ½Ã µµ½Ã°¡½º °¡±¸ ¼ö / Àü±¹ µµ½Ã°¡½º °¡±¸ ¼ö
+TEMP_EF: ±â¿ÂÈ¿°ú
+POWER: ¹ßÀü·®
+ELEC: Àü·Â ¼Ò¸ð·®

@@ -1,26 +1,26 @@
-# ì„ í˜• ê²€ìƒ‰ ì•Œê³ ë¦¬ì¦˜(ê²€ìƒ‰ì— ì‹¤íŒ¨í•˜ë©´ ValueErrorë¥¼ ë³´ëƒ„)
+# ¼±Çü °Ë»ö ¾Ë°í¸®Áò(°Ë»ö¿¡ ½ÇÆĞÇÏ¸é ValueError¸¦ º¸³¿)
 
 from typing import Any, Sequence
 
 def seq_search(a: Sequence, key: Any) -> int:
-    """ì‹œí€€ìŠ¤ aì—ì„œ keyì™€ ê°’ì´ ê°™ì€ ìš”ì†Œë¥¼ ì„ í˜• ê²€ìƒ‰(for ë¬¸)"""
+    """½ÃÄö½º a¿¡¼­ key¿Í °ªÀÌ °°Àº ¿ä¼Ò¸¦ ¼±Çü °Ë»ö(for ¹®)"""
     for i in range(len(a)):
         if a[i] == key:
-            return i        # ê²€ìƒ‰ ì„±ê³µ(ì²¨ìë¥¼ ë°˜í™˜)
-    raise ValueError        # ê²€ìƒ‰ ì‹¤íŒ¨
+            return i        # °Ë»ö ¼º°ø(Ã·ÀÚ¸¦ ¹İÈ¯)
+    raise ValueError        # °Ë»ö ½ÇÆĞ
 
 if __name__ == '__main__':
-    num = int(input('ì›ì†Œ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
-    x = [None] * num  # ì›ì†Œ ìˆ˜ê°€ numì¸ ë°°ì—´ì„ ìƒì„±
+    num = int(input('¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
+    x = [None] * num  # ¿ø¼Ò ¼ö°¡ numÀÎ ¹è¿­À» »ı¼º
 
     for i in range(num):
         x[i] = int(input(f'x[{i}]: '))
 
-    ky = int(input('ê²€ìƒ‰í•  ê°’ì„ ì…ë ¥í•˜ì„¸ìš”.: '))  # í‚¤ kyë¥¼ ì…ë ¥ë°›ìŒ
+    ky = int(input('°Ë»öÇÒ °ªÀ» ÀÔ·ÂÇÏ¼¼¿ä.: '))  # Å° ky¸¦ ÀÔ·Â¹ŞÀ½
 
     try:
-        idx = seq_search(x, ky)  # kyì™€ ê°’ì´ ê°™ì€ ìš”ì†Œë¥¼ xì—ì„œ ê²€ìƒ‰
+        idx = seq_search(x, ky)  # ky¿Í °ªÀÌ °°Àº ¿ä¼Ò¸¦ x¿¡¼­ °Ë»ö
     except ValueError:
-        print('ê²€ìƒ‰ ê°’ì„ ê°–ëŠ” ìš”ì†Œê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.')
+        print('°Ë»ö °ªÀ» °®´Â ¿ä¼Ò°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.')
     else:
-        print(f'ê²€ìƒ‰ ê°’ì€ x[{idx}]ì— ìˆìŠµë‹ˆë‹¤.')
+        print(f'°Ë»ö °ªÀº x[{idx}]¿¡ ÀÖ½À´Ï´Ù.')

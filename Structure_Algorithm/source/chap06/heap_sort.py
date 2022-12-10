@@ -1,19 +1,19 @@
-# [Do it! ì‹¤ìŠµ 6-16] í™ ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ êµ¬í˜„í•˜ê¸°
+# [Do it! ½Ç½À 6-16] Èü Á¤·Ä ¾Ë°í¸®Áò ±¸ÇöÇÏ±â
 
 from typing import MutableSequence
 
 def heap_sort(a: MutableSequence) -> None:
-    """í™ ì •ë ¬"""
+    """Èü Á¤·Ä"""
 
     def down_heap(a: MutableSequence, left: int, right: int) -> None:
-        """a[left] ~ a[right]ë¥¼ í™ìœ¼ë¡œ ë§Œë“¤ê¸°"""
-        temp = a[left]      # ë£¨íŠ¸
+        """a[left] ~ a[right]¸¦ ÈüÀ¸·Î ¸¸µé±â"""
+        temp = a[left]      # ·çÆ®
 
         parent = left
         while parent < (right + 1) // 2:
-            cl = parent * 2 + 1     # ì™¼ìª½ ìì‹
-            cr = cl + 1             # ì˜¤ë¥¸ìª½ ìì‹
-            child = cr if cr <= right and a[cr] > a[cl] else cl  # í° ê°’ì„ ì„ íƒí•©ë‹ˆë‹¤.
+            cl = parent * 2 + 1     # ¿ŞÂÊ ÀÚ½Ä
+            cr = cl + 1             # ¿À¸¥ÂÊ ÀÚ½Ä
+            child = cr if cr <= right and a[cr] > a[cl] else cl  # Å« °ªÀ» ¼±ÅÃÇÕ´Ï´Ù.
             if temp >= a[child]:
                 break
             a[parent] = a[child]
@@ -22,23 +22,23 @@ def heap_sort(a: MutableSequence) -> None:
 
     n = len(a)
 
-    for i in range((n - 1) // 2, -1, -1):   # a[i] ~ a[n-1]ì„ í™ìœ¼ë¡œ ë§Œë“¤ê¸°
+    for i in range((n - 1) // 2, -1, -1):   # a[i] ~ a[n-1]À» ÈüÀ¸·Î ¸¸µé±â
         down_heap(a, i, n - 1)
 
     for i in range(n - 1, 0, -1):
-        a[0], a[i] = a[i], a[0]     # ìµœëŒ“ê°’ì¸ a[0]ê³¼ ë§ˆì§€ë§‰ ì›ì†Œ a[i]ë¥¼ êµí™˜
-        down_heap(a, 0, i - 1)      # a[0] ~ a[i-1]ì„ í™ìœ¼ë¡œ ë§Œë“¤ê¸°
+        a[0], a[i] = a[i], a[0]     # ÃÖ´ñ°ªÀÎ a[0]°ú ¸¶Áö¸· ¿ø¼Ò a[i]¸¦ ±³È¯
+        down_heap(a, 0, i - 1)      # a[0] ~ a[i-1]À» ÈüÀ¸·Î ¸¸µé±â
 
 if __name__ == '__main__':
-    print('í™ ì •ë ¬ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤.')
-    num = int(input('ì›ì†Œ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. : '))
-    x = [None] * num    # ì›ì†Œ ìˆ˜ê°€ numì¸ ë°°ì—´ì„ ìƒì„±
+    print('Èü Á¤·ÄÀ» ¼öÇàÇÕ´Ï´Ù.')
+    num = int(input('¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. : '))
+    x = [None] * num    # ¿ø¼Ò ¼ö°¡ numÀÎ ¹è¿­À» »ı¼º
 
     for i in range(num):
         x[i] = int(input(f'x[{i}] : '))
 
-    heap_sort(x)        # ë°°ì—´ xë¥¼ í™ ì •ë ¬
+    heap_sort(x)        # ¹è¿­ x¸¦ Èü Á¤·Ä
 
-    print('ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í–ˆìŠµë‹ˆë‹¤.')
+    print('¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇß½À´Ï´Ù.')
     for i in range(num):
         print(f'x[{i}] = {x[i]}')

@@ -1,6 +1,6 @@
-# íŠœí”Œì˜ ëª¨ë“  ì›ì†Œë¥¼ â€‹â€‹enumerate í•¨ìˆ˜ë¡œ ìŠ¤ìº”í•˜ê¸°(1ë¶€í„° ì¹´ìš´íŠ¸)
+# Æ©ÇÃÀÇ ¸ğµç ¿ø¼Ò¸¦ ??enumerate ÇÔ¼ö·Î ½ºÄµÇÏ±â(1ºÎÅÍ Ä«¿îÆ®)
 
 x = ('John', 'George', 'Paul', 'Ringo')
 
 for i, name in enumerate(x, 1):
-    print(f'{i} ë²ˆì§¸ = {name}')
+    print(f'{i} ¹øÂ° = {name}')

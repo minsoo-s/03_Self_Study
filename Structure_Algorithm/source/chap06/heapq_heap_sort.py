@@ -1,10 +1,10 @@
-# [Do it! ì‹¤ìŠµ 6C-5] í™ ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ êµ¬í˜„í•˜ê¸°(heapq.pushì™€ heapq.popë¥¼ ì‚¬ìš©ï¼‰
+# [Do it! ½Ç½À 6C-5] Èü Á¤·Ä ¾Ë°í¸®Áò ±¸ÇöÇÏ±â(heapq.push¿Í heapq.pop¸¦ »ç¿ë£©
 
 import heapq
 from typing import MutableSequence
 
 def heap_sort(a: MutableSequence) -> None:
-    """í™ ì •ë ¬(heapq.pushì™€ heapq.popë¥¼ ì‚¬ìš©)"""
+    """Èü Á¤·Ä(heapq.push¿Í heapq.pop¸¦ »ç¿ë)"""
 
     heap = []
     for i in a:
@@ -13,15 +13,15 @@ def heap_sort(a: MutableSequence) -> None:
         a[i] = heapq.heappop(heap)
 
 if __name__ == '__main__':
-    print('í™ ì •ë ¬ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤(heapq.pushì™€ heapq.popë¥¼ ì‚¬ìš©).')
-    num = int(input('ì›ì†Œ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. : '))
-    x = [None] * num    # ì›ì†Œ ìˆ˜ê°€ numì¸ ë°°ì—´ì„ ìƒì„±
+    print('Èü Á¤·ÄÀ» ¼öÇàÇÕ´Ï´Ù(heapq.push¿Í heapq.pop¸¦ »ç¿ë).')
+    num = int(input('¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. : '))
+    x = [None] * num    # ¿ø¼Ò ¼ö°¡ numÀÎ ¹è¿­À» »ı¼º
 
     for i in range(num):
         x[i] = int(input(f'x[{i}] : '))
 
-    heap_sort(x)        # ë°°ì—´ xë¥¼ í™ ì •ë ¬
+    heap_sort(x)        # ¹è¿­ x¸¦ Èü Á¤·Ä
 
-    print('ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í–ˆìŠµë‹ˆë‹¤.')
+    print('¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇß½À´Ï´Ù.')
     for i in range(num):
         print(f'x[{i}] = {x[i]}')

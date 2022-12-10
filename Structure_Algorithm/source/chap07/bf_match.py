@@ -1,9 +1,9 @@
-# [Do it! 실습 7-1] 브루트 포스법으로 문자열 검색하기
+# [Do it! �ǽ� 7-1] ���Ʈ ���������� ���ڿ� �˻��ϱ�
 
 def bf_match(txt: str, pat: str) -> int:
-    """브루트 포스법으로 문자열 검색"""
-    pt = 0  # txt(텍스트)를 따라가는 커서
-    pp = 0  # pat(패턴)를 따라가는 커서
+    """���Ʈ ���������� ���ڿ� �˻�"""
+    pt = 0  # txt(�ؽ�Ʈ)�� ���󰡴� Ŀ��
+    pp = 0  # pat(����)�� ���󰡴� Ŀ��
 
     while pt != len(txt) and pp != len(pat):
         if txt[pt] == pat[pp]:
@@ -16,12 +16,12 @@ def bf_match(txt: str, pat: str) -> int:
     return pt - pp if pp == len(pat) else -1
 
 if __name__ == '__main__':
-    s1 = input('텍스트를 입력하세요.: ')  # 텍스트용 문자열
-    s2 = input('패턴을 입력하세요.: ')    # 패턴용 문자열
+    s1 = input('�ؽ�Ʈ�� �Է��ϼ���.: ')  # �ؽ�Ʈ�� ���ڿ�
+    s2 = input('������ �Է��ϼ���.: ')    # ���Ͽ� ���ڿ�
 
-    idx = bf_match(s1, s2)  # 문자열 s1~s2를 브루트 포스법으로 검색
+    idx = bf_match(s1, s2)  # ���ڿ� s1~s2�� ���Ʈ ���������� �˻�
 
     if idx == -1:
-        print('텍스트 안에 패턴이 존재하지 않습니다.')
+        print('�ؽ�Ʈ �ȿ� ������ �������� �ʽ��ϴ�.')
     else:
-        print(f'{(idx + 1)}번째 문자에서 일치합니다.')
+        print(f'{(idx + 1)}��° ���ڿ��� ��ġ�մϴ�.')

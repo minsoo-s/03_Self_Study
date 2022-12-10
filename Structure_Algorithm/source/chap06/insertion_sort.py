@@ -1,9 +1,9 @@
-# [Do it! ì‹¤ìŠµ 6-7] ë‹¨ìˆœ ì‚½ì… ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ êµ¬í˜„í•˜ê¸°
+# [Do it! ½Ç½À 6-7] ´Ü¼ø »ğÀÔ Á¤·Ä ¾Ë°í¸®Áò ±¸ÇöÇÏ±â
 
 from typing import MutableSequence
 
 def insertion_sort(a: MutableSequence) -> None:
-    """ë‹¨ìˆœ ì‚½ì… ì •ë ¬"""
+    """´Ü¼ø »ğÀÔ Á¤·Ä"""
     n = len(a)
     for i in range(1, n):
         j = i
@@ -14,15 +14,15 @@ def insertion_sort(a: MutableSequence) -> None:
         a[j] = tmp
 
 if __name__ == '__main__':
-    print('ë‹¨ìˆœ ì‚½ì… ì •ë ¬ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤.')
-    num = int(input('ì›ì†Œ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
-    x = [None] * num  # ì›ì†Œ ìˆ˜ê°€ numì¸ ë°°ì—´ì„ ìƒì„±
+    print('´Ü¼ø »ğÀÔ Á¤·ÄÀ» ¼öÇàÇÕ´Ï´Ù.')
+    num = int(input('¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
+    x = [None] * num  # ¿ø¼Ò ¼ö°¡ numÀÎ ¹è¿­À» »ı¼º
 
     for i in range(num):
         x[i] = int(input(f'x[{i}]: '))
 
-    insertion_sort(x)  # ë°°ì—´ xë¥¼ ë‹¨ìˆœ ì‚½ì… ì •ë ¬
+    insertion_sort(x)  # ¹è¿­ x¸¦ ´Ü¼ø »ğÀÔ Á¤·Ä
 
-    print('ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í–ˆìŠµë‹ˆë‹¤.')
+    print('¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇß½À´Ï´Ù.')
     for i in range(num):
         print(f'x[{i}] = {x[i]}')

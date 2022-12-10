@@ -1,16 +1,16 @@
-# [Do it! ì‹¤ìŠµ 6-4] ë²„ë¸” ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ êµ¬í˜„í•˜ê¸°(ì•Œê³ ë¦¬ì¦˜ì˜ ê°œì„  2) - ì •ë ¬ ê³¼ì •ì„ ì¶œë ¥
+# [Do it! ½Ç½À 6-4] ¹öºí Á¤·Ä ¾Ë°í¸®Áò ±¸ÇöÇÏ±â(¾Ë°í¸®ÁòÀÇ °³¼± 2) - Á¤·Ä °úÁ¤À» Ãâ·Â
 
 from typing import MutableSequence
 
 def bubble_sort3_verbose(a: MutableSequence) -> None:
-    """ë²„ë¸” ì •ë ¬(ìŠ¤ìº” ë²”ìœ„ë¥¼ ì œí•œ)"""
-    ccnt = 0  # ë¹„êµ íšŸìˆ˜
-    scnt = 0  # êµí™˜ íšŸìˆ˜
+    """¹öºí Á¤·Ä(½ºÄµ ¹üÀ§¸¦ Á¦ÇÑ)"""
+    ccnt = 0  # ºñ±³ È½¼ö
+    scnt = 0  # ±³È¯ È½¼ö
     n = len(a)
     k = 0
     i = 0
     while k < n - 1:
-        print(f'íŒ¨ìŠ¤ {i + 1}')
+        print(f'ÆĞ½º {i + 1}')
         i += 1
         last = n - 1
         for j in range(n - 1, k, -1):
@@ -28,19 +28,19 @@ def bubble_sort3_verbose(a: MutableSequence) -> None:
         for m in range(0, n - 1):
            print(f'{a[m]:2}', end='  ')
         print(f'{a[n - 1]:2}')
-    print(f'ë¹„êµë¥¼ {ccnt}ë²ˆ í–ˆìŠµë‹ˆë‹¤.')
-    print(f'êµí™˜ì„ {scnt}ë²ˆ í–ˆìŠµë‹ˆë‹¤.')
+    print(f'ºñ±³¸¦ {ccnt}¹ø Çß½À´Ï´Ù.')
+    print(f'±³È¯À» {scnt}¹ø Çß½À´Ï´Ù.')
 
 if __name__ == '__main__':
-    print('ë²„ë¸” ì •ë ¬ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤')
-    num = int(input('ì›ì†Œ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”.: '))
-    x = [None] * num  # ì›ì†Œ ìˆ˜ numì¸ ë°°ì—´ì„ ìƒì„±
+    print('¹öºí Á¤·ÄÀ» ¼öÇàÇÕ´Ï´Ù')
+    num = int(input('¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä.: '))
+    x = [None] * num  # ¿ø¼Ò ¼ö numÀÎ ¹è¿­À» »ı¼º
 
     for i in range(num):
         x[i] = int(input(f'x[{i}] : '))
 
-    bubble_sort3_verbose(x)  # ë°°ì—´ xë¥¼ ë²„ë¸”
+    bubble_sort3_verbose(x)  # ¹è¿­ x¸¦ ¹öºí
 
-    print('ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í–ˆìŠµë‹ˆë‹¤.')
+    print('¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇß½À´Ï´Ù.')
     for i in range(num):
         print(f'x[{i}] = {x[i]}')

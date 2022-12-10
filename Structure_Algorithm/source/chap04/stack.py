@@ -1,59 +1,59 @@
-# [Do it! 4C-1] ê³ ì • ê¸¸ì´ ìŠ¤íƒ í´ë˜ìŠ¤ êµ¬í˜„í•˜ê¸°(collections.dequeë¥¼ ì‚¬ìš©)
+# [Do it! 4C-1] °íÁ¤ ±æÀÌ ½ºÅÃ Å¬·¡½º ±¸ÇöÇÏ±â(collections.deque¸¦ »ç¿ë)
 
 from typing import Any
 from collections import deque
 
 class Stack:
-    """ê³ ì • ê¸¸ì´ ìŠ¤íƒ í´ë˜ìŠ¤(collections.dequeë¥¼ ì‚¬ìš©)"""
+    """°íÁ¤ ±æÀÌ ½ºÅÃ Å¬·¡½º(collections.deque¸¦ »ç¿ë)"""
 
     def __init__(self, maxlen: int = 256) -> None:
-        """ì´ˆê¸°í™” ì„ ì–¸"""
+        """ÃÊ±âÈ­ ¼±¾ğ"""
         self.capacity = maxlen
         self.__stk = deque([], maxlen)
 
     def __len__(self) -> int:
-        """ìŠ¤íƒì— ìŒ“ì—¬ìˆëŠ” ë°ì´í„° ê°œìˆ˜ë¥¼ ë°˜í™˜"""
+        """½ºÅÃ¿¡ ½×¿©ÀÖ´Â µ¥ÀÌÅÍ °³¼ö¸¦ ¹İÈ¯"""
         return len(self.__stk)
 
     def is_empty(self) -> bool:
-        """ìŠ¤íƒì´ ë¹„ì–´ ìˆëŠ”ì§€ íŒë‹¨"""
+        """½ºÅÃÀÌ ºñ¾î ÀÖ´ÂÁö ÆÇ´Ü"""
         return not self.__stk
 
     def is_full(self) -> bool:
-        """ìŠ¤íƒì´ ê°€ë“ ì°¼ëŠ”ì§€ íŒë‹¨"""
+        """½ºÅÃÀÌ °¡µæ Ã¡´ÂÁö ÆÇ´Ü"""
         return len(self.__stk) == self.__stk.maxlen
 
     def push(self, value: Any) -> None:
-        """ìŠ¤íƒì— valueë¥¼ í‘¸ì‹œ"""
+        """½ºÅÃ¿¡ value¸¦ Çª½Ã"""
         self.__stk.append(value)
 
     def pop(self) -> Any:
-        """ìŠ¤íƒì—ì„œ ë°ì´í„°ë¥¼ íŒ"""
+        """½ºÅÃ¿¡¼­ µ¥ÀÌÅÍ¸¦ ÆË"""
         return self.__stk.pop()
 
     def peek(self) -> Any:
-        """ìŠ¤íƒì—ì„œ ë°ì´í„°ë¥¼ í”¼í¬"""
+        """½ºÅÃ¿¡¼­ µ¥ÀÌÅÍ¸¦ ÇÇÅ©"""
         return self.__stk[-1]
 
     def clear(self) -> None:
-        """ìŠ¤íƒì„ ë¹„ì›ë‹ˆë‹¤"""
+        """½ºÅÃÀ» ºñ¿ó´Ï´Ù"""
         self.__stk.clear()
 
     def find(self, value: Any) -> Any:
-        """ìŠ¤íƒì—ì„œ valueë¥¼ ì°¾ì•„ ì¸ë±ìŠ¤(ì—†ìœ¼ë©´ -1)ë¥¼ ë°˜í™˜"""
+        """½ºÅÃ¿¡¼­ value¸¦ Ã£¾Æ ÀÎµ¦½º(¾øÀ¸¸é -1)¸¦ ¹İÈ¯"""
         try:
             return self.__stk.index(value)
         except ValueError:
             return -1
 
     def count(self, value: Any) -> int:
-        """ìŠ¤íƒì— í¬í•¨ëœ valueì˜ ê°œìˆ˜ë¥¼ ë°˜í™˜"""
+        """½ºÅÃ¿¡ Æ÷ÇÔµÈ valueÀÇ °³¼ö¸¦ ¹İÈ¯"""
         return self.__stk.count(value)
 
     def __contains__(self, value: Any) -> bool:
-        """ìŠ¤íƒì— valueê°€ í¬í•¨ë˜ì–´ ìˆëŠ”ì§€ íŒë‹¨"""
+        """½ºÅÃ¿¡ value°¡ Æ÷ÇÔµÇ¾î ÀÖ´ÂÁö ÆÇ´Ü"""
         return self.count(value)
 
     def dump(self) -> int:
-        """ìŠ¤íƒ ì•ˆì— ìˆëŠ” ëª¨ë“  ë°ì´í„°ë¥¼ ë‚˜ì—´"""
+        """½ºÅÃ ¾È¿¡ ÀÖ´Â ¸ğµç µ¥ÀÌÅÍ¸¦ ³ª¿­"""
         print(list(self.__stk))

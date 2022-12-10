@@ -1,33 +1,33 @@
-# [Do it! ì‹¤ìŠµ 8-1] í¬ì¸í„°ë¡œ ì—°ê²° ë¦¬ìŠ¤íŠ¸ ë§Œë“¤ê¸°
+# [Do it! ½Ç½À 8-1] Æ÷ÀÎÅÍ·Î ¿¬°á ¸®½ºÆ® ¸¸µé±â
 
 from __future__ import annotations
 from typing import Any, Type
 
 class Node:
-    """ì—°ê²° ë¦¬ìŠ¤íŠ¸ìš© ë…¸ë“œ í´ë˜ìŠ¤"""
+    """¿¬°á ¸®½ºÆ®¿ë ³ëµå Å¬·¡½º"""
 
     def __init__(self, data: Any = None, next: Node = None):
-        """ì´ˆê¸°í™”"""
-        self.data = data  # ë°ì´í„°
-        self.next = next  # ë’¤ìª½ í¬ì¸í„°
+        """ÃÊ±âÈ­"""
+        self.data = data  # µ¥ÀÌÅÍ
+        self.next = next  # µÚÂÊ Æ÷ÀÎÅÍ
 
-# Do it! ì‹¤ìŠµ 8-1 [B]
+# Do it! ½Ç½À 8-1 [B]
 class LinkedList:
-    """ì—°ê²° ë¦¬ìŠ¤íŠ¸ í´ë˜ìŠ¤"""
+    """¿¬°á ¸®½ºÆ® Å¬·¡½º"""
 
     def __init__(self) -> None:
-        """ì´ˆê¸°í™”"""
-        self.no = 0          # ë…¸ë“œì˜ ê°œìˆ˜
-        self.head = None     # ë¨¸ë¦¬ ë…¸ë“œ
-        self.current = None  # ì£¼ëª© ë…¸ë“œ
+        """ÃÊ±âÈ­"""
+        self.no = 0          # ³ëµåÀÇ °³¼ö
+        self.head = None     # ¸Ó¸® ³ëµå
+        self.current = None  # ÁÖ¸ñ ³ëµå
 
     def __len__(self) -> int:
-        """ì—°ê²° ë¦¬ìŠ¤íŠ¸ì˜ ë…¸ë“œ ê°œìˆ˜ë¥¼ ë°˜í™˜"""
+        """¿¬°á ¸®½ºÆ®ÀÇ ³ëµå °³¼ö¸¦ ¹İÈ¯"""
         return self.no
 
-# Do it! ì‹¤ìŠµ 8-1 [C]
+# Do it! ½Ç½À 8-1 [C]
     def search(self, data: Any) -> int:
-        """dataì™€ ê°’ì´ ê°™ì€ ë…¸ë“œë¥¼ ê²€ìƒ‰"""
+        """data¿Í °ªÀÌ °°Àº ³ëµå¸¦ °Ë»ö"""
         cnt = 0
         ptr = self.head
         while ptr is not None:
@@ -39,110 +39,110 @@ class LinkedList:
         return -1
 
     def __contains__(self, data: Any) -> bool:
-        """ì—°ê²° ë¦¬ìŠ¤íŠ¸ì— dataê°€ í¬í•¨ë˜ì–´ ìˆëŠ”ê°€?"""
+        """¿¬°á ¸®½ºÆ®¿¡ data°¡ Æ÷ÇÔµÇ¾î ÀÖ´Â°¡?"""
         return self.search(data) >= 0
 
-# Do it! ì‹¤ìŠµ 8-1 [D]
+# Do it! ½Ç½À 8-1 [D]
     def add_first(self, data: Any) -> None:
-        """ë§¨ ì•ì— ë…¸ë“œë¥¼ ì‚½ì…"""
-        ptr = self.head  # ì‚½ì… ì „ì˜ ë¨¸ë¦¬ ë…¸ë“œ
+        """¸Ç ¾Õ¿¡ ³ëµå¸¦ »ğÀÔ"""
+        ptr = self.head  # »ğÀÔ ÀüÀÇ ¸Ó¸® ³ëµå
         self.head = self.current = Node(data, ptr)
         self.no += 1
 
-# Do it! ì‹¤ìŠµ 8-1 [E]
+# Do it! ½Ç½À 8-1 [E]
     def add_last(self, data: Any):
-        """ë§¨ ëì— ë…¸ë“œë¥¼ ì‚½ì…"""
-        if self.head is None :    # ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ ìˆìœ¼ë©´
-            self.add_first(data)  # ë§¨ì•ì— ë…¸ë“œ ì‚½ì…
+        """¸Ç ³¡¿¡ ³ëµå¸¦ »ğÀÔ"""
+        if self.head is None :    # ¸®½ºÆ®°¡ ºñ¾î ÀÖÀ¸¸é
+            self.add_first(data)  # ¸Ç¾Õ¿¡ ³ëµå »ğÀÔ
         else:
             ptr = self.head
             while ptr.next is not None:
-                ptr = ptr.next  # whileë¬¸ì„ ì¢…ë£Œí•  ë•Œ ptrì€ ê¼¬ë¦¬ ë…¸ë“œë¥¼ ì°¸ì¡°
+                ptr = ptr.next  # while¹®À» Á¾·áÇÒ ¶§ ptrÀº ²¿¸® ³ëµå¸¦ ÂüÁ¶
             ptr.next = self.current = Node(data, None)
             self.no += 1
 
-# Do it! ì‹¤ìŠµ 8-1 [F]
+# Do it! ½Ç½À 8-1 [F]
     def remove_first(self) -> None:
-        """ë¨¸ë¦¬ ë…¸ë“œë¥¼ ì‚­ì œ"""
-        if self.head is not None:  # ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ ìˆìœ¼ë©´
+        """¸Ó¸® ³ëµå¸¦ »èÁ¦"""
+        if self.head is not None:  # ¸®½ºÆ®°¡ ºñ¾î ÀÖÀ¸¸é
             self.head = self.current = self.head.next
         self.no -= 1
 
-# Do it! ì‹¤ìŠµ 8-1 [G]
+# Do it! ½Ç½À 8-1 [G]
     def remove_last(self):
-        """ê¼¬ë¦¬ ë…¸ë“œ ì‚­ì œ"""
+        """²¿¸® ³ëµå »èÁ¦"""
         if self.head is not None:
-            if self.head.next is None :  # ë…¸ë“œê°€ 1ê°œ ë¿ì´ë¼ë©´
-                self.remove_first()      # ë¨¸ë¦¬ ë…¸ë“œë¥¼ ì‚­ì œ
+            if self.head.next is None :  # ³ëµå°¡ 1°³ »ÓÀÌ¶ó¸é
+                self.remove_first()      # ¸Ó¸® ³ëµå¸¦ »èÁ¦
             else:
-                ptr = self.head  # ìŠ¤ìº” ì¤‘ì¸ ë…¸ë“œ
-                pre = self.head  # ìŠ¤ìº” ì¤‘ì¸ ë…¸ë“œì˜ ì•ìª½ ë…¸ë“œ
+                ptr = self.head  # ½ºÄµ ÁßÀÎ ³ëµå
+                pre = self.head  # ½ºÄµ ÁßÀÎ ³ëµåÀÇ ¾ÕÂÊ ³ëµå
 
                 while ptr.next is not None:
                     pre = ptr
-                    ptr = ptr.next # whileë¬¸ ì¢…ë£Œì‹œ ptrì€ ê¼¬ë¦¬ ë…¸ë“œë¥¼ ì°¸ì¡°í•˜ê³  preëŠ” ë§¨ëì—ì„œ ë‘ ë²ˆì§¸ ë…¸ë“œë¥¼ ì°¸ì¡°
-                pre.next = None  # preëŠ” ì‚­ì œ ë’¤ ê¼¬ë¦¬ ë…¸ë“œ
+                    ptr = ptr.next # while¹® Á¾·á½Ã ptrÀº ²¿¸® ³ëµå¸¦ ÂüÁ¶ÇÏ°í pre´Â ¸Ç³¡¿¡¼­ µÎ ¹øÂ° ³ëµå¸¦ ÂüÁ¶
+                pre.next = None  # pre´Â »èÁ¦ µÚ ²¿¸® ³ëµå
                 self.current = pre
                 self.no -= 1
 
-# Do it! ì‹¤ìŠµ 8-1 [H]
+# Do it! ½Ç½À 8-1 [H]
     def remove(self, p: Node) -> None:
-        """ë…¸ë“œ pë¥¼ ì‚­ì œ"""
+        """³ëµå p¸¦ »èÁ¦"""
         if self.head is not None:
-            if p is self.head:       # pê°€ ë¨¸ë¦¬ â€‹â€‹ë…¸ë“œì´ë©´
-                self.remove_first()  # ë¨¸ë¦¬ ë…¸ë“œë¥¼ ì‚­ì œ
+            if p is self.head:       # p°¡ ¸Ó¸® ??³ëµåÀÌ¸é
+                self.remove_first()  # ¸Ó¸® ³ëµå¸¦ »èÁ¦
             else:
                 ptr = self.head
 
                 while ptr.next is not p:
                     ptr = ptr.next
                     if ptr is None:
-                        return  # ptrì€ ë¦¬ìŠ¤íŠ¸ì— ì¡´ì¬í•˜ì§€ ì•ŠìŒ
+                        return  # ptrÀº ¸®½ºÆ®¿¡ Á¸ÀçÇÏÁö ¾ÊÀ½
                 ptr.next = p.next
                 self.current = ptr
                 self.no -= 1
 
     def remove_current_node(self) -> None:
-        """ì£¼ëª© ë…¸ë“œë¥¼ ì‚­ì œ"""
+        """ÁÖ¸ñ ³ëµå¸¦ »èÁ¦"""
         self.remove(self.current)
 
     def clear(self) -> None:
-        """ì „ì²´ ë…¸ë“œë¥¼ ì‚­ì œ"""
-        while self.head is not None:  # ì „ì²´ê°€ ë¹„ì–´ ìˆê²Œ ë  ë•Œê¹Œì§€
-            self.remove_first()       # ë¨¸ë¦¬ ë…¸ë“œë¥¼ ì‚­ì œ
+        """ÀüÃ¼ ³ëµå¸¦ »èÁ¦"""
+        while self.head is not None:  # ÀüÃ¼°¡ ºñ¾î ÀÖ°Ô µÉ ¶§±îÁö
+            self.remove_first()       # ¸Ó¸® ³ëµå¸¦ »èÁ¦
         self.current = None
         self.no = 0
 
     def next(self) -> bool:
-        """ì£¼ëª© ë…¸ë“œë¥¼ í•œ ì¹¸ ë’¤ë¡œ ì§„í–‰"""
+        """ÁÖ¸ñ ³ëµå¸¦ ÇÑ Ä­ µÚ·Î ÁøÇà"""
         if self.current is None or self.current.next is None:
-            return False  # ì§„í–‰í•  ìˆ˜ ì—†ìŒ
+            return False  # ÁøÇàÇÒ ¼ö ¾øÀ½
         self.current = self.current.next
         return True
 
-# Do it! ì‹¤ìŠµ 8-1 [I]
+# Do it! ½Ç½À 8-1 [I]
     def print_current_node(self) -> None:
-        """ì£¼ëª© ë…¸ë“œë¥¼ ì¶œë ¥"""
+        """ÁÖ¸ñ ³ëµå¸¦ Ãâ·Â"""
         if self.current is None:
-            print('ì£¼ëª© ë…¸ë“œê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.')
+            print('ÁÖ¸ñ ³ëµå°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.')
         else:
             print(self.current.data)
 
     def print(self) -> None:
-        """ëª¨ë“  ë…¸ë“œë¥¼ ì¶œë ¥"""
+        """¸ğµç ³ëµå¸¦ Ãâ·Â"""
         ptr = self.head
 
         while ptr is not None:
             print(ptr.data)
             ptr = ptr.next
 
-# Do it! ì‹¤ìŠµ 8-1 [J]
+# Do it! ½Ç½À 8-1 [J]
     def __iter__(self) -> LinkedListIterator:
-        """ì´í„°ë ˆì´í„°(ë°˜ë³µì)ë¥¼ ë°˜í™˜"""
+        """ÀÌÅÍ·¹ÀÌÅÍ(¹İº¹ÀÚ)¸¦ ¹İÈ¯"""
         return LinkedListIterator(self.head)
 
 class LinkedListIterator:
-    """í´ë˜ìŠ¤ LinkedListì˜ ì´í„°ë ˆì´í„°(ë°˜ë³µì)ìš© í´ë˜ìŠ¤"""
+    """Å¬·¡½º LinkedListÀÇ ÀÌÅÍ·¹ÀÌÅÍ(¹İº¹ÀÚ)¿ë Å¬·¡½º"""
 
     def __init__(self, head: Node):
         self.current = head

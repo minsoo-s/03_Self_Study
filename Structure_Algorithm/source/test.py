@@ -1,4 +1,4 @@
-Q=input('ê³„ì‚°í•  ìˆ«ì:')
+Q=input('°è»êÇÒ ¼ıÀÚ:')
 
 # count=0
 # While int(Q)==A:

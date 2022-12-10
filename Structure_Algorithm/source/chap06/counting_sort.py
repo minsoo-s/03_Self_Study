@@ -1,34 +1,34 @@
-# [Do it! ì‹¤ìŠµ 6-17] ë„ìˆ˜ ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ êµ¬í˜„í•˜ê¸°
+# [Do it! ½Ç½À 6-17] µµ¼ö Á¤·Ä ¾Ë°í¸®Áò ±¸ÇöÇÏ±â
 
 from typing import MutableSequence
 
 def fsort(a: MutableSequence, max: int) -> None:
-    """ë„ìˆ˜ ì •ë ¬(ë°°ì—´ ì›ì†Ÿê°’ì€ 0 ì´ìƒ max ì´í•˜)"""
-    n = len(a)           # ì •ë ¬í•  ë°°ì—´ a
-    f = [0] * (max + 1)  # ëˆ„ì  ë„ìˆ˜ ë¶„í¬í‘œ ë°°ì—´ f
-    b = [0] * n          # ì‘ì—…ìš© ë°°ì—´ b
+    """µµ¼ö Á¤·Ä(¹è¿­ ¿ø¼Ú°ªÀº 0 ÀÌ»ó max ÀÌÇÏ)"""
+    n = len(a)           # Á¤·ÄÇÒ ¹è¿­ a
+    f = [0] * (max + 1)  # ´©Àû µµ¼ö ºĞÆ÷Ç¥ ¹è¿­ f
+    b = [0] * n          # ÀÛ¾÷¿ë ¹è¿­ b
 
-    for i in range(n):              f[a[i]] += 1                     # [1ë‹¨ê³„]
-    for i in range(1, max + 1):     f[i] += f[i - 1]                 # [2ë‹¨ê³„]
-    for i in range(n - 1, -1, -1):  f[a[i]] -= 1; b[f[a[i]]] = a[i]  # [3ë‹¨ê³„]
-    for i in range(n):              a[i] = b[i]                      # [4ë‹¨ê³„]
+    for i in range(n):              f[a[i]] += 1                     # [1´Ü°è]
+    for i in range(1, max + 1):     f[i] += f[i - 1]                 # [2´Ü°è]
+    for i in range(n - 1, -1, -1):  f[a[i]] -= 1; b[f[a[i]]] = a[i]  # [3´Ü°è]
+    for i in range(n):              a[i] = b[i]                      # [4´Ü°è]
 
 def counting_sort(a: MutableSequence) -> None:
-    """ë„ìˆ˜ ì •ë ¬"""
+    """µµ¼ö Á¤·Ä"""
     fsort(a, max(a))
 
 if __name__ == '__main__':
-    print('ë„ìˆ˜ ì •ë ¬ì„ í•©ë‹ˆë‹¤.')
-    num = int(input('ì›ì†Œ ìˆ˜ë¥¼ ì…ë ¥í•˜ì„¸ìš”. : '))
-    x = [None] * num  # ì›ì†Œ ìˆ˜ê°€ numì¸ ë°°ì—´ì„ ìƒì„±
+    print('µµ¼ö Á¤·ÄÀ» ÇÕ´Ï´Ù.')
+    num = int(input('¿ø¼Ò ¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä. : '))
+    x = [None] * num  # ¿ø¼Ò ¼ö°¡ numÀÎ ¹è¿­À» »ı¼º
 
-    for i in range(num):  # ì–‘ìˆ˜ë§Œ ì…ë ¥ë°›ìŒ
+    for i in range(num):  # ¾ç¼ö¸¸ ÀÔ·Â¹ŞÀ½
         while True:
             x[i] = int(input(f'x[{i}] : '))
             if x[i] >= 0: break
 
-    counting_sort(x)  # ë°°ì—´ xë¥¼ ë„ìˆ˜ ì •ë ¬
+    counting_sort(x)  # ¹è¿­ x¸¦ µµ¼ö Á¤·Ä
 
-    print('ì˜¤ë¦„ì°¨ìˆœìœ¼ë¡œ ì •ë ¬í–ˆìŠµë‹ˆë‹¤.')
+    print('¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇß½À´Ï´Ù.')
     for i in range(num):
         print(f'x[{i}] = {x[i]}')

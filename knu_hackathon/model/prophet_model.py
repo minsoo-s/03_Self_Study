@@ -4,15 +4,15 @@ import matplotlib.pyplot as plt
 
 
 # def prophet_model(data: pd.DataFrame, col: str, params: dict, periods: int, dtype="int"):
-#     """ì‹œê³„ì—´ ì˜ˆì¸¡ ê²°ê³¼ê°’ ë°˜í™˜í•´ì£¼ëŠ” ëª¨ë¸
+#     """½Ã°è¿­ ¿¹Ãø °á°ú°ª ¹İÈ¯ÇØÁÖ´Â ¸ğµ¨
 #     Args:
-#         data: ë°ì´í„°í”„ë ˆì„
-#         col: í”¼ì³ ì»¬ëŸ¼ ì´ë¦„
-#         params: prophets íŒŒë¼ë¯¸í„°
-#         periods: ì˜ˆì¸¡ ì¼ìˆ˜
+#         data: µ¥ÀÌÅÍÇÁ·¹ÀÓ
+#         col: ÇÇÃÄ ÄÃ·³ ÀÌ¸§
+#         params: prophets ÆÄ¶ó¹ÌÅÍ
+#         periods: ¿¹Ãø ÀÏ¼ö
 
 #     Returns:
-#         pd.DataFrame: ì˜ˆì¸¡ í”¼ì³ ë°ì´í„°í”„ë ˆì„í˜•íƒœ ë°˜í™˜
+#         pd.DataFrame: ¿¹Ãø ÇÇÃÄ µ¥ÀÌÅÍÇÁ·¹ÀÓÇüÅÂ ¹İÈ¯
 #     """
 #     data_c = data.copy()
 #     # rename cols

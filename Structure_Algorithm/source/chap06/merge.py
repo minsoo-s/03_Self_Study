@@ -1,13 +1,13 @@
-# [Do it! ì‹¤ìŠµ 6-14] ì •ë ¬ì„ ë§ˆì¹œ ë‘ ë°°ì—´ì„ ë³‘í•©í•˜ê¸°
+# [Do it! ½Ç½À 6-14] Á¤·ÄÀ» ¸¶Ä£ µÎ ¹è¿­À» º´ÇÕÇÏ±â
 
 from typing import Sequence, MutableSequence
 
 def merge_sorted_list(a: Sequence, b: Sequence, c: MutableSequence) -> None:
-    """ì •ë ¬ì„ ë§ˆì¹œ ë°°ì—´ aì™€ bë¥¼ ë³‘í•©í•˜ì—¬ cì— ì €ìž¥"""
-    pa, pb, pc = 0, 0, 0                 # ê° ë°°ì—´ì˜ ì»¤ì„œ
-    na, nb, nc = len(a), len(b), len(c)  # ê° ë°°ì—´ì˜ ì›ì†Œìˆ˜ 
+    """Á¤·ÄÀ» ¸¶Ä£ ¹è¿­ a¿Í b¸¦ º´ÇÕÇÏ¿© c¿¡ ÀúÀå"""
+    pa, pb, pc = 0, 0, 0                 # °¢ ¹è¿­ÀÇ Ä¿¼­
+    na, nb, nc = len(a), len(b), len(c)  # °¢ ¹è¿­ÀÇ ¿ø¼Ò¼ö 
 
-    while pa < na and pb < nb:  # paì™€ pbë¥¼ ë¹„êµí•˜ì—¬ ìž‘ì€ ê°’ì„ pcì— ì €ìž¥
+    while pa < na and pb < nb:  # pa¿Í pb¸¦ ºñ±³ÇÏ¿© ÀÛÀº °ªÀ» pc¿¡ ÀúÀå
         if a[pa] <= b[pb]:
             c[pc] = a[pa]
             pa += 1
@@ -16,12 +16,12 @@ def merge_sorted_list(a: Sequence, b: Sequence, c: MutableSequence) -> None:
             pb += 1
         pc += 1
 
-    while pa < na:              # aì— ë‚¨ì€ ì›ì†Œë¥¼ ë³µì‚¬
+    while pa < na:              # a¿¡ ³²Àº ¿ø¼Ò¸¦ º¹»ç
         c[pc] = a[pa]
         pa += 1
         pc += 1
 
-    while pb < nb:              # bì— ë‚¨ì€ ì›ì†Œë¥¼ ë³µì‚¬
+    while pb < nb:              # b¿¡ ³²Àº ¿ø¼Ò¸¦ º¹»ç
         c[pc] = b[pb]
         pb += 1
         pc += 1
@@ -30,11 +30,11 @@ if __name__ == '__main__':
     a = [2, 4, 6, 8, 11, 13]
     b = [1, 2, 3, 4, 9, 16, 21]
     c = [None] * (len(a) + len(b))
-    print('ì •ë ¬ì„ ë§ˆì¹œ ë‘ ë°°ì—´ì˜ ë³‘í•©ì„ ìˆ˜í–‰í•©ë‹ˆë‹¤.')
+    print('Á¤·ÄÀ» ¸¶Ä£ µÎ ¹è¿­ÀÇ º´ÇÕÀ» ¼öÇàÇÕ´Ï´Ù.')
 
-    merge_sorted_list(a, b, c)  # ë°°ì—´ aì™€ bë¥¼ ë³‘í•©í•˜ì—¬ cì— ì €ìž¥
+    merge_sorted_list(a, b, c)  # ¹è¿­ a¿Í b¸¦ º´ÇÕÇÏ¿© c¿¡ ÀúÀå
 
-    print('ë°°ì—´ aì™€ bë¥¼ ë³‘í•©í•˜ì—¬ ë°°ì—´ cì— ì €ìž¥í•˜ì˜€ìŠµë‹ˆë‹¤.')
-    print(f'ë°°ì—´ a: {a}')
-    print(f'ë°°ì—´ b: {b}')
-    print(f'ë°°ì—´ c: {c}')
+    print('¹è¿­ a¿Í b¸¦ º´ÇÕÇÏ¿© ¹è¿­ c¿¡ ÀúÀåÇÏ¿´½À´Ï´Ù.')
+    print(f'¹è¿­ a: {a}')
+    print(f'¹è¿­ b: {b}')
+    print(f'¹è¿­ c: {c}')

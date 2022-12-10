@@ -1,90 +1,90 @@
-# ì›í˜• ì´ì¤‘ ì—°ê²° ë¦¬ìŠ¤íŠ¸ êµ¬í˜„í•˜ê¸°
-# Do it! ì‹¤ìŠµ 8-5 [A] 
+# ¿øÇü ÀÌÁß ¿¬°á ¸®½ºÆ® ±¸ÇöÇÏ±â
+# Do it! ½Ç½À 8-5 [A] 
 from __future__ import annotations
 from typing import Any, Type
 
 class Node:
-    """ì›í˜• ì´ì¤‘ ì—°ê²° ë¦¬ìŠ¤íŠ¸ìš© ë…¸ë“œ í´ë˜ìŠ¤"""
+    """¿øÇü ÀÌÁß ¿¬°á ¸®½ºÆ®¿ë ³ëµå Å¬·¡½º"""
 
     def __init__(self, data: Any = None, prev: Node = None,
                        next: Node = None) -> None:
-        """ì´ˆê¸°í™”"""
-        self.data = data          # ë°ì´í„°
-        self.prev = prev or self  # ì•ìª½ í¬ì¸í„°
-        self.next = next or self  # ë’¤ìª½ í¬ì¸í„°
+        """ÃÊ±âÈ­"""
+        self.data = data          # µ¥ÀÌÅÍ
+        self.prev = prev or self  # ¾ÕÂÊ Æ÷ÀÎÅÍ
+        self.next = next or self  # µÚÂÊ Æ÷ÀÎÅÍ
 
 class DoubleLinkedList:
-    """ì›í˜• ì´ì¤‘ ì—°ê²° ë¦¬ìŠ¤íŠ¸ í´ë˜ìŠ¤"""
+    """¿øÇü ÀÌÁß ¿¬°á ¸®½ºÆ® Å¬·¡½º"""
 
     def __init__(self) -> None:
-        """ì´ˆê¸°í™”"""
-        self.head = self.current = Node()  # ë”ë¯¸ ë…¸ë“œë¥¼ ìƒì„±
+        """ÃÊ±âÈ­"""
+        self.head = self.current = Node()  # ´õ¹Ì ³ëµå¸¦ »ı¼º
         self.no = 0
 
     def __len__(self) -> int:
-        """ì„ í˜• ë¦¬ìŠ¤íŠ¸ì˜ ë…¸ë“œ ìˆ˜ë¥¼ ë°˜í™˜"""
+        """¼±Çü ¸®½ºÆ®ÀÇ ³ëµå ¼ö¸¦ ¹İÈ¯"""
         return self.no
 
     def is_empty(self) -> bool:
-        """ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ ìˆëŠ”ê°€?"""
+        """¸®½ºÆ®°¡ ºñ¾î ÀÖ´Â°¡?"""
         return self.head.next is self.head  
 
-# Do it! ì‹¤ìŠµ 8-5 [B]
+# Do it! ½Ç½À 8-5 [B]
     def search(self, data: Any) -> Any:
-        """dataì™€ ê°’ì´ ê°™ì€ ë…¸ë“œë¥¼ ê²€ìƒ‰"""
+        """data¿Í °ªÀÌ °°Àº ³ëµå¸¦ °Ë»ö"""
         cnt = 0
-        ptr = self.head.next  # í˜„ì¬ ìŠ¤ìº” ì¤‘ì¸ ë…¸ë“œ
+        ptr = self.head.next  # ÇöÀç ½ºÄµ ÁßÀÎ ³ëµå
         while ptr is not self.head:
             if data == ptr.data:
                 self.current = ptr
-                return cnt  # ê²€ìƒ‰ ì„±ê³µ
+                return cnt  # °Ë»ö ¼º°ø
             cnt += 1
-            ptr = ptr.next  # ë’¤ìª½ ë…¸ë“œì— ì£¼ëª©
-        return -1           # ê²€ìƒ‰ ì‹¤íŒ¨
+            ptr = ptr.next  # µÚÂÊ ³ëµå¿¡ ÁÖ¸ñ
+        return -1           # °Ë»ö ½ÇÆĞ
 
     def __contains__(self, data: Any) -> bool:
-        """ì—°ê²° ë¦¬ìŠ¤íŠ¸ì— dataê°€ í¬í•¨ë˜ì–´ ìˆëŠ”ê°€?"""
+        """¿¬°á ¸®½ºÆ®¿¡ data°¡ Æ÷ÇÔµÇ¾î ÀÖ´Â°¡?"""
         return self.search(data) >= 0
 
-# Do it! ì‹¤ìŠµ 8-5 [C]
+# Do it! ½Ç½À 8-5 [C]
     def print_current_node(self) -> None:
-        """ì£¼ëª© ë…¸ë“œë¥¼ ì¶œë ¥"""
+        """ÁÖ¸ñ ³ëµå¸¦ Ãâ·Â"""
         if self.is_empty():
-            print('ì£¼ëª© ë…¸ë“œëŠ” ì—†ìŠµë‹ˆë‹¤.')
+            print('ÁÖ¸ñ ³ëµå´Â ¾ø½À´Ï´Ù.')
         else:
             print(self.current.data)
 
     def print(self) -> None:
-        """ëª¨ë“  ë…¸ë“œë¥¼ ì¶œë ¥"""
-        ptr = self.head.next  # ë”ë¯¸ ë…¸ë“œì˜ ë’¤ìª½ ë…¸ë“œ
+        """¸ğµç ³ëµå¸¦ Ãâ·Â"""
+        ptr = self.head.next  # ´õ¹Ì ³ëµåÀÇ µÚÂÊ ³ëµå
         while ptr is not self.head:
             print(ptr.data)
             ptr = ptr.next
 
     def print_reverse(self) -> None:
-        """ëª¨ë“  ë…¸ë“œë¥¼ ì—­ìˆœìœ¼ë¡œ ì¶œë ¥"""
-        ptr = self.head.prev  # ë”ë¯¸ ë…¸ë“œì˜ ì•ìª½ ë…¸ë“œ
+        """¸ğµç ³ëµå¸¦ ¿ª¼øÀ¸·Î Ãâ·Â"""
+        ptr = self.head.prev  # ´õ¹Ì ³ëµåÀÇ ¾ÕÂÊ ³ëµå
         while ptr is not self.head:
             print(ptr.data)
             ptr = ptr.prev
 
     def next(self) -> bool:
-        """ì£¼ëª© ë…¸ë“œë¥¼ í•œ ì¹¸ ë’¤ë¡œ ì´ë™"""
+        """ÁÖ¸ñ ³ëµå¸¦ ÇÑ Ä­ µÚ·Î ÀÌµ¿"""
         if self.is_empty() or self.current.next is self.head:
-            return False  # ì´ë™í•  ìˆ˜ ì—†ìŒ
+            return False  # ÀÌµ¿ÇÒ ¼ö ¾øÀ½
         self.current = self.current.next
         return True
 
     def prev(self) -> bool:
-        """ì£¼ëª© ë…¸ë“œë¥¼ í•œ ì¹¸ ì•ìœ¼ë¡œ ì´ë™"""
+        """ÁÖ¸ñ ³ëµå¸¦ ÇÑ Ä­ ¾ÕÀ¸·Î ÀÌµ¿"""
         if self.is_empty() or self.current.prev is self.head:
-            return False  # ì´ë™í•  ìˆ˜ ì—†ìŒ
+            return False  # ÀÌµ¿ÇÒ ¼ö ¾øÀ½
         self.current = self.current.prev
         return True
 
-# Do it! ì‹¤ìŠµ 8-5[D]
+# Do it! ½Ç½À 8-5[D]
     def add(self, data: Any) -> None:
-        """ì£¼ëª© ë…¸ë“œì˜ ë°”ë¡œ ë’¤ì— ë…¸ë“œë¥¼ ì‚½ì…"""
+        """ÁÖ¸ñ ³ëµåÀÇ ¹Ù·Î µÚ¿¡ ³ëµå¸¦ »ğÀÔ"""
         node = Node(data, self.current, self.current.next)
         self.current.next.prev = node
         self.current.next = node
@@ -92,18 +92,18 @@ class DoubleLinkedList:
         self.no += 1
 
     def add_first(self, data: Any) -> None:
-        """ë§¨ ì•ì— ë…¸ë“œë¥¼ ì‚½ì…"""
-        self.current = self.head  # ë”ë¯¸ ë…¸ë“œ headì˜ ë°”ë¡œ ë’¤ì— ì‚½ì…
+        """¸Ç ¾Õ¿¡ ³ëµå¸¦ »ğÀÔ"""
+        self.current = self.head  # ´õ¹Ì ³ëµå headÀÇ ¹Ù·Î µÚ¿¡ »ğÀÔ
         self.add(data)
 
     def add_last(self, data: Any) -> None:
-        """ë§¨ ë’¤ì— ë…¸ë“œë¥¼ ì‚½ì…"""
-        self.current = self.head.prev  # ê¼¬ë¦¬ ë…¸ë“œ head.prevì˜ ë°”ë¡œ ë’¤ì— ì‚½ì…
+        """¸Ç µÚ¿¡ ³ëµå¸¦ »ğÀÔ"""
+        self.current = self.head.prev  # ²¿¸® ³ëµå head.prevÀÇ ¹Ù·Î µÚ¿¡ »ğÀÔ
         self.add(data)
 
-# Do it! ì‹¤ìŠµ 8-5[E]
+# Do it! ½Ç½À 8-5[E]
     def remove_current_node(self) -> None:
-        """ì£¼ëª© ë…¸ë“œ ì‚­ì œ"""
+        """ÁÖ¸ñ ³ëµå »èÁ¦"""
         if not self.is_empty():
             self.current.prev.next = self.current.next
             self.current.next.prev = self.current.prev
@@ -113,43 +113,43 @@ class DoubleLinkedList:
                 self.current = self.head.next
 
     def remove(self, p: Node) -> None:
-        """ë…¸ë“œ pë¥¼ ì‚­ì œ"""
+        """³ëµå p¸¦ »èÁ¦"""
         ptr = self.head.next
 
         while ptr is not self.head:
-            if ptr is p:  # pë¥¼ ë°œê²¬
+            if ptr is p:  # p¸¦ ¹ß°ß
                 self.current = p
                 self.remove_current_node()
                 break
             ptr = ptr.next
 
     def remove_first(self) -> None:
-        """ë¨¸ë¦¬ ë…¸ë“œ ì‚­ì œ"""
-        self.current = self.head.next  # ë¨¸ë¦¬ ë…¸ë“œ head.nextë¥¼ ì‚­ì œ
+        """¸Ó¸® ³ëµå »èÁ¦"""
+        self.current = self.head.next  # ¸Ó¸® ³ëµå head.next¸¦ »èÁ¦
         self.remove_current_node()
 
     def remove_last(self) -> None:
-        """ê¼¬ë¦¬ ë…¸ë“œ ì‚­ì œ"""
-        self.current = self.head.prev  # ê¼¬ë¦¬ ë…¸ë“œ head.prevë¥¼ ì‚­ì œ
+        """²¿¸® ³ëµå »èÁ¦"""
+        self.current = self.head.prev  # ²¿¸® ³ëµå head.prev¸¦ »èÁ¦
         self.remove_current_node()
 
     def clear(self) -> None:
-        """ëª¨ë“  ë…¸ë“œë¥¼ ì‚­ì œ"""
-        while not self.is_empty():  # ë¦¬ìŠ¤íŠ¸ ì „ì²´ê°€ ë¹Œ ë•Œê¹Œì§€
-            self.remove_first()  # ë¨¸ë¦¬ ë…¸ë“œë¥¼ ì‚­ì œ
+        """¸ğµç ³ëµå¸¦ »èÁ¦"""
+        while not self.is_empty():  # ¸®½ºÆ® ÀüÃ¼°¡ ºô ¶§±îÁö
+            self.remove_first()  # ¸Ó¸® ³ëµå¸¦ »èÁ¦
         self.no = 0
 
-# Do it! ì‹¤ìŠµ 8-5[F]
+# Do it! ½Ç½À 8-5[F]
     def __iter__(self) -> DoubleLinkedListIterator:
-        """ë°˜ë³µìë¥¼ ë°˜í™˜"""
+        """¹İº¹ÀÚ¸¦ ¹İÈ¯"""
         return DoubleLinkedListIterator(self.head)
 
     def __reversed__(self) -> DoubleLinkedListReverseIterator:
-        """ë‚´ë¦¼ì°¨ìˆœ ë°˜ë³µìë¥¼ ë°˜í™˜"""
+        """³»¸²Â÷¼ø ¹İº¹ÀÚ¸¦ ¹İÈ¯"""
         return DoubleLinkedListReverseIterator(self.head)
 
 class DoubleLinkedListIterator:
-    """DoubleLinkedListì˜ ë°˜ë³µììš© í´ë˜ìŠ¤"""
+    """DoubleLinkedListÀÇ ¹İº¹ÀÚ¿ë Å¬·¡½º"""
 
     def __init__(self, head: Node):
         self.head = head
@@ -167,7 +167,7 @@ class DoubleLinkedListIterator:
             return data
 
 class DoubleLinkedListReverseIterator:
-    """DoubleLinkedListì˜ ë‚´ë¦¼ì°¨ìˆœ ë°˜ë³µììš© í´ë˜ìŠ¤"""
+    """DoubleLinkedListÀÇ ³»¸²Â÷¼ø ¹İº¹ÀÚ¿ë Å¬·¡½º"""
 
     def __init__(self, head: Node):
         self.head = head
