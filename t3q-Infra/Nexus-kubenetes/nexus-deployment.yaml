@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nexus-deployment
+  labels:
+    app: nexus
+spec:
+  replicas: 1
+  selectior:
+    matchLabels:
+      app: nexus
+  template:
+    metadata:
+      labels:
+        app: nexus
+    spec:
+      containers:
+        - name: nexus                      # 넥서스 컨테이너 이름
+          image: sonatype/nexus3:latest    # 넥서스 이미지 이름
+          ports:
+
+          - containerPort: 8081
+            name: nexus
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  type: NodePort
+  ports:
+    - name: nexus
+      protocol: TCP
+      port: 8081
+      targetPort: nexus
+  selector:
+    app: MyApp
